@@ -284,7 +284,7 @@ export const WinnerVerification = () => {
 <div className="px-xl py-md bg-surface-container-low border-t border-outline-variant/20 flex items-center justify-between">
 <p className="font-label-sm text-label-sm text-on-surface-variant">Showing <span className="font-bold text-on-surface">1-{Math.min(winners.length, 25)}</span> of {winners.length} claims</p>
 <div className="flex items-center gap-xs">
-<button className="p-sm rounded-lg hover:bg-surface-container transition-all border border-outline-variant/30 disabled:opacity-50" disabled="">
+<button className="p-sm rounded-lg hover:bg-surface-container transition-all border border-outline-variant/30 disabled:opacity-50" disabled>
 <span className="material-symbols-outlined">chevron_left</span>
 </button>
 <button className="w-10 h-10 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm">1</button>

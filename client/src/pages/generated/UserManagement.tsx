@@ -229,7 +229,7 @@ export const UserManagement = () => {
 </div>
 {/*  Table Pagination  */}
 <div className="p-lg bg-light-mist/20 border-t border-light-mist flex items-center justify-between">
-<button className="flex items-center gap-xs font-label-sm text-label-sm text-subtle-gray hover:text-primary transition-colors disabled:opacity-50" disabled="">
+<button className="flex items-center gap-xs font-label-sm text-label-sm text-subtle-gray hover:text-primary transition-colors disabled:opacity-50" disabled>
 <span className="material-symbols-outlined text-[18px]">chevron_left</span>
                         Previous
                     </button>
