@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactScore Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d8e3fb;
+            border-radius: 10px;
+        }
+    </style>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#783200",
+                    "surface-container-low": "#f0f3ff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-error": "#ffffff",
+                    "on-background": "#111c2d",
+                    "off-white": "#FAFBFF",
+                    "on-error-container": "#93000a",
+                    "background": "#f9f9ff",
+                    "outline-variant": "#c2c6d8",
+                    "inverse-surface": "#263143",
+                    "secondary": "#006c49",
+                    "inverse-primary": "#b3c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "light-mist": "#F8FAFC",
+                    "tertiary-fixed": "#ffdbca",
+                    "on-primary-fixed-variant": "#003fa4",
+                    "momentum-orange-light": "#FFEDD5",
+                    "surface-container": "#e7eeff",
+                    "on-surface": "#111c2d",
+                    "surface": "#f9f9ff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#d8e3fb",
+                    "on-tertiary-fixed": "#341100",
+                    "on-secondary-fixed": "#002113",
+                    "tertiary-container": "#bc5200",
+                    "on-tertiary-container": "#fff6f3",
+                    "surface-tint": "#0054d6",
+                    "tertiary": "#954000",
+                    "on-surface-variant": "#424656",
+                    "hero-blue-dark": "#003BB3",
+                    "dark-slate": "#1E293B",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#cfdaf2",
+                    "secondary-fixed": "#6ffbbe",
+                    "charcoal": "#475569",
+                    "surface-container-high": "#dee8ff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001849",
+                    "win-gold-light": "#FFFBEB",
+                    "impact-green-dark": "#059669",
+                    "on-secondary-container": "#00714d",
+                    "impact-green-light": "#DCFCE7",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#ecf1ff",
+                    "momentum-orange-dark": "#C2410C",
+                    "primary-container": "#0066ff",
+                    "outline": "#727687",
+                    "win-gold-muted": "#FCD34D",
+                    "alert-red": "#EF4444",
+                    "surface-bright": "#f9f9ff",
+                    "primary-fixed": "#dae1ff",
+                    "hero-blue-light": "#E6F0FF",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "secondary-container": "#6cf8bb",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "win-gold": "#FBBF24",
+                    "primary": "#0050cb",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#f8f7ff",
+                    "subtle-gray": "#94A3B8",
+                    "secondary-fixed-dim": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "xl": "24px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "2xl": "32px",
+                    "md": "12px",
+                    "5xl": "96px",
+                    "3xl": "48px",
+                    "4xl": "64px",
+                    "margin": "24px",
+                    "lg": "16px"
+            },
+            "fontFamily": {
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "mono": ["Monaco"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display": ["56px", {"lineHeight": "64px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "mono": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col py-xl px-lg bg-surface-container-lowest shadow-sm z-50">
+<div class="mb-5xl">
+<h1 class="font-display text-headline-sm font-bold text-hero-blue-dark">Charity Golf</h1>
+<p class="font-body-md text-body-md text-subtle-gray">Premium Member</p>
+</div>
+<nav class="flex-grow space-y-md">
+<!-- Active State: Dashboard -->
+<a class="flex items-center gap-md py-sm px-md rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-body-md text-body-md">Scores</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">volunteer_activism</span>
+<span class="font-body-md text-body-md">Charity</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Winnings</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-body-md text-body-md">Draws</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-md">
+<button class="w-full bg-primary text-on-primary py-md px-lg rounded-lg font-bold shadow-sm hover:bg-hero-blue-dark transition-all duration-200 transform hover:scale-[1.02]">
+                Donate Now
+            </button>
+<div class="pt-xl space-y-sm">
+<a class="flex items-center gap-md py-sm px-md text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md text-on-surface-variant hover:text-alert-red transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface flex justify-between items-center px-xl z-40">
+<h2 class="font-display text-headline-sm font-bold text-primary">Dashboard Overview</h2>
+<div class="flex items-center gap-xl">
+<div class="relative group">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-subtle-gray">search</span>
+<input class="pl-5xl pr-lg py-sm bg-light-mist border border-outline-variant rounded-full text-body-sm focus:ring-2 focus:ring-primary outline-none transition-all w-64" placeholder="Search data..." type="text"/>
+</div>
+<div class="flex items-center gap-lg">
+<button class="relative p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-alert-red rounded-full"></span>
+</button>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+</div>
+<div class="flex items-center gap-md border-l border-outline-variant pl-xl">
+<div class="text-right">
+<p class="font-title-md text-sm leading-none">Alex Rivera</p>
+<p class="text-label-sm text-subtle-gray">Pro Tier</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional close-up studio portrait of a confident young executive with a clean, modern aesthetic, wearing a navy blazer, set against a soft, out-of-focus high-end corporate office background. The lighting is bright and even, highlighting a friendly and trustworthy expression, adhering to a light-mode color palette of soft blues and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtKrNXwOTKLC785x4Dkb1ZOVxAEquYtoQGY-8Bod6ez9FX3xY2GWmG3pYztLE6xLOhVrmQ0hMDcaOxjU99JnlmiXoCHfwBqAA45bcfcsmaZqekMT6jqhjv-nsefCMSjjRU_ILHWL_drEInL7n8vkGgUKOqzeDpvncTMjok9_tMgMYOydwtcWSzrRcUjLbrbkuuTSNvL-g975ROX0UJyqSRUstJjbdHfHMwtIt8mRuIfm7gOMd_reMjXcDmea4UyjieiomXAj_N9w4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen p-xl bg-background">
+<div class="max-w-7xl mx-auto space-y-xl">
+<!-- Hero Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<!-- Participation Summary Stat 1 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-t-4 border-momentum-orange-dark group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-md">
+<span class="text-label-sm font-bold text-momentum-orange-dark uppercase tracking-wider">Upcoming Event</span>
+<span class="material-symbols-outlined text-momentum-orange-dark">calendar_today</span>
+</div>
+<h3 class="font-headline-sm text-on-surface">March 2026</h3>
+<p class="font-body-md text-subtle-gray mt-xs">Current Draw Cycle</p>
+</div>
+<!-- Participation Summary Stat 2 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-t-4 border-primary group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-md">
+<span class="text-label-sm font-bold text-primary uppercase tracking-wider">Entries Status</span>
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<h3 class="font-headline-sm text-on-surface">5</h3>
+<span class="text-title-md text-subtle-gray">/ 5</span>
+</div>
+<p class="font-body-md text-subtle-gray mt-xs">Scores Entered this Period</p>
+</div>
+<!-- Participation Summary Stat 3 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-t-4 border-win-gold group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-md">
+<span class="text-label-sm font-bold text-win-gold uppercase tracking-wider">Next Deadline</span>
+<span class="material-symbols-outlined text-win-gold">timer</span>
+</div>
+<h3 class="font-headline-sm text-on-surface">April 1, 2026</h3>
+<p class="font-body-md text-subtle-gray mt-xs">Next Draw Scheduled</p>
+</div>
+</div>
+<!-- Main Interactive Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Column: Entry & Charity -->
+<div class="lg:col-span-8 space-y-xl">
+<!-- Score Entry Module -->
+<div class="bg-hero-blue-light/30 border border-hero-blue-light p-2xl rounded-xl relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-2xl">
+<div>
+<h3 class="font-display text-headline-sm text-hero-blue-dark">Record Your Latest Score</h3>
+<p class="text-body-md text-on-surface-variant">Enter your round results to qualify for the March draw.</p>
+</div>
+<div class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-bold text-label-sm">
+                                    QUALIFIED
+                                </div>
+</div>
+<form class="space-y-xl">
+<div class="grid grid-cols-5 gap-md">
+<!-- Number Inputs -->
+<div class="space-y-xs">
+<label class="text-label-sm font-bold text-hero-blue-dark">N1</label>
+<input class="w-full text-center font-bold text-title-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary outline-none" max="45" min="1" type="number" value="12"/>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-bold text-hero-blue-dark">N2</label>
+<input class="w-full text-center font-bold text-title-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary outline-none" max="45" min="1" type="number" value="24"/>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-bold text-hero-blue-dark">N3</label>
+<input class="w-full text-center font-bold text-title-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary outline-none" max="45" min="1" type="number" value="31"/>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-bold text-hero-blue-dark">N4</label>
+<input class="w-full text-center font-bold text-title-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary outline-none" max="45" min="1" type="number" value="07"/>
+</div>
+<div class="space-y-xs">
+<label class="text-label-sm font-bold text-hero-blue-dark">N5</label>
+<input class="w-full text-center font-bold text-title-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg focus:border-primary focus:ring-2 focus:ring-primary outline-none" max="45" min="1" type="number" value="42"/>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-xl items-end">
+<div class="flex-grow space-y-xs">
+<label class="text-label-sm font-bold text-hero-blue-dark">Round Date</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-subtle-gray">calendar_month</span>
+<input class="w-full pl-3xl pr-md py-md bg-surface-container-lowest border border-outline-variant rounded-lg focus:border-primary outline-none" type="date"/>
+</div>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-5xl py-md rounded-lg font-bold shadow-lg hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                                        Submit Entry
+                                    </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-xl border-b border-light-mist flex justify-between items-center">
+<h3 class="font-title-md">Recent Score Activity</h3>
+<button class="text-primary font-bold text-label-sm flex items-center gap-xs">
+                                View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-light-mist">
+<tr>
+<th class="px-xl py-md text-label-sm font-bold text-subtle-gray uppercase tracking-wider">Date</th>
+<th class="px-xl py-md text-label-sm font-bold text-subtle-gray uppercase tracking-wider">Score Sequence</th>
+<th class="px-xl py-md text-label-sm font-bold text-subtle-gray uppercase tracking-wider">Status</th>
+<th class="px-xl py-md text-label-sm font-bold text-subtle-gray uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-light-mist">
+<tr class="hover:bg-light-mist/50 transition-colors">
+<td class="px-xl py-lg text-body-md font-medium">Mar 15, 2026</td>
+<td class="px-xl py-lg">
+<div class="flex gap-xs">
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">12</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">24</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">31</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">07</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">42</span>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-impact-green-light text-impact-green-dark text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-impact-green-dark"></span>
+                                                Verified
+                                            </span>
+</td>
+<td class="px-xl py-lg">
+<button class="text-subtle-gray hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-light-mist/50 transition-colors">
+<td class="px-xl py-lg text-body-md font-medium">Mar 08, 2026</td>
+<td class="px-xl py-lg">
+<div class="flex gap-xs">
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">05</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">18</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">29</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">33</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">45</span>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-impact-green-light text-impact-green-dark text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-impact-green-dark"></span>
+                                                Verified
+                                            </span>
+</td>
+<td class="px-xl py-lg">
+<button class="text-subtle-gray hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-light-mist/50 transition-colors">
+<td class="px-xl py-lg text-body-md font-medium">Mar 01, 2026</td>
+<td class="px-xl py-lg">
+<div class="flex gap-xs">
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">11</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">22</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">33</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">44</span>
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container text-primary font-bold text-xs">01</span>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-subtle-gray"></span>
+                                                Pending
+                                            </span>
+</td>
+<td class="px-xl py-lg">
+<button class="text-subtle-gray hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Subscription & Spotlight -->
+<div class="lg:col-span-4 space-y-xl">
+<!-- Subscription Status Card -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm">
+<div class="flex items-start justify-between mb-lg">
+<h4 class="font-title-md">Subscription</h4>
+<span class="px-md py-xs bg-impact-green-light text-impact-green-dark rounded-full text-label-sm font-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                ACTIVE
+                            </span>
+</div>
+<div class="space-y-xs mb-xl">
+<p class="text-headline-sm font-extrabold text-on-surface">Premium Yearly</p>
+<p class="text-body-md text-subtle-gray">Renews March 31, 2026</p>
+</div>
+<div class="pt-lg border-t border-light-mist">
+<button class="w-full border-2 border-primary text-primary py-md rounded-lg font-bold hover:bg-hero-blue-light transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-md">credit_card</span>
+                                Manage Plan
+                            </button>
+</div>
+</div>
+<!-- Selected Charity Spotlight -->
+<div class="bg-impact-green-light/20 border-l-4 border-impact-green-dark p-xl rounded-r-xl rounded-l-md shadow-sm relative group cursor-pointer hover:bg-impact-green-light/30 transition-all">
+<div class="flex items-center gap-lg mb-xl">
+<div class="w-16 h-16 bg-surface-container-lowest rounded-xl flex items-center justify-center shadow-sm overflow-hidden p-xs">
+<img class="w-full h-full object-contain" data-alt="A clean, minimalist logo for 'The Clean Water Initiative' featuring stylized blue water droplets and a green leaf within a circular badge, professional corporate branding style with high-contrast sharp edges and a modern font, set on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx2XRTShRUSxJE_fGPebFYinMWUUyZoozurx3_JMRQ22IEemtm1CajjjS800FQPXzhbNGmVwFjxrZrs9oWVZcj0Ia0EbT8gFFwV4mjRIWrVsPM5TJiU-W3BGFOkj9AuKq7zpTrhiEAT6xS2nejItl6d__mPxOOOK1z3fTNRtUqY08b2rVUsHPSSzr5o5DGl_Us2v_w6n7yqVbYEoOwtyn-mLnf46F4wJGCiALukvPApD40JfmYXwRfXu0wHxOyjfUjNZYXjr48PmI"/>
+</div>
+<div>
+<p class="text-label-sm font-bold text-impact-green-dark uppercase">Charity Spotlight</p>
+<h4 class="font-title-md text-on-surface">Clean Water Initiative</h4>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 p-md rounded-lg border border-impact-green-light mb-xl">
+<p class="text-body-md text-on-surface leading-snug">
+<span class="font-bold text-impact-green-dark">100% of your subscription</span> contribution is currently being directed here.
+                            </p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface shadow-sm" data-alt="Close-up avatar of a diverse person smiling, high-quality professional photography, corporate lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfyuYrDkStXWSkcelnhKnQLTNsoQDcQ3qzUvPC4xPPvlW-VR0iIWjLP6-qIiIoarDk4cJfikaXErV-YcbOiDpPY41blRoYioiN9QeGBK-BsP3KthCttHnGY5vwq38uSMjpUapc7HRYVY6K5MjhxqOQZSQNR0Qod9tcZNPrnhPsBBATw36tMMFmJa19UW2ofKoB-lWa_QFAfHarTcFC_5yL6jqgkYWkYJLgFWsEpQXvF4l9Z4TQxibQ7ta9YkC4uJcaU5v4Rvc_axI"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface shadow-sm" data-alt="Close-up avatar of a diverse person smiling, high-quality professional photography, corporate lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW43zfivWtoN3Jq6ZT2DFFxpP2XNdwI3tD-wmR8AMBGJC4MG5phC3k1dx3mmQaihxaA0t3ndeX6lz8SN4h2JmjUYZ_5-DigHipg5Sd1eXnkons9GTEMZd9QzCtykZvS-yAaM3KEoIz7Dbj70DQfukCKwwwzHNkaH7qk1HPBQsYZi4kj7LTgpQfCZYFWgba3BQ2TBz6rwp5iSFx6asaEDFu83lAFGy5H-AsFI0Ek31ikwGzUD2Q819f4EHDMPXl4Kn5OwIHxfVbxPw"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface shadow-sm" data-alt="Close-up avatar of a diverse person smiling, high-quality professional photography, corporate lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoS5mwddTYgyZiCNHO1eSh8vJB0OkDdyTDVVi28LPXXFRDU11egnY10HWvrsQh_WZQ5Xaaq6digOhuLHm1IPBCyIfX1eLcBcXLObegXFzAbCnfEFxNNAhswGrBedU625DilUc9ynZqosVINp6DyP5QjTUmUMRM1bdgP0flStB4O8fjmWFyN-SKtt1AEsID4ri7tpWM0AfjmZ5CLKIDtuctuhRuJjSVc47rrfkyb-NmAIt-ppnlbfBa8KFmPG1fOyaaDopLdBQ-K-U"/>
+<div class="w-8 h-8 rounded-full bg-impact-green-dark text-on-primary flex items-center justify-center text-[10px] font-bold border-2 border-surface">+12k</div>
+</div>
+<button class="text-impact-green-dark font-bold text-label-sm flex items-center gap-xs">
+                                Change Charity <span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+</div>
+<!-- Visual Accent Card -->
+<div class="rounded-xl overflow-hidden h-48 relative shadow-lg">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A cinematic, high-fidelity long exposure shot of a modern city skyline at dusk with glowing trails of light flowing through architectural bridges, capturing a sense of momentum and growth. The colors are dominated by deep navy blues and vibrant electric teals, with sharp crisp details and no human figures. The mood is aspirational, tech-forward, and sophisticated." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6dmRaPcVLQm_1y-nPLxkIc6U948NCMm7_lOfVVAA_uWKjJCOTde95-IdT5ECUMOfixSPhJa-UDVoC7QcjICfTwZdygAjmkB8af6e1bgkgI0lVtiRBCraUX9GxkPj3lif9jVAupOPcsCbNMbHy1LAhKrn7b4MYUofbZ1MeshdSzyzkrThmCETpE63cWz7qKXQI1jlGdvJB1792ds3j92DkjYjJ61-CKKi7jyNpx2HUGUhgJvnNvR1Xszqn-6j5ml8pUrkxCkM0ddg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-hero-blue-dark/80 to-transparent"></div>
+<div class="absolute bottom-xl left-xl right-xl">
+<p class="text-on-primary font-bold text-body-md">Your Impact this Quarter</p>
+<p class="text-primary-fixed text-title-md font-bold">2,400L Clean Water Provided</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions and effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.querySelector('label').classList.add('text-primary');
+                });
+                input.addEventListener('blur', function() {
+                    this.parentElement.querySelector('label').classList.remove('text-primary');
+                });
+                
+                // Limit input to 2 digits max
+                input.addEventListener('input', function() {
+                    if (this.value.length > 2) this.value = this.value.slice(0, 2);
+                });
+            });
+
+            // Active button scale effect
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+                btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+                btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactScore | Play Golf, Make an Impact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#263143",
+                    "secondary-container": "#6cf8bb",
+                    "hero-blue-dark": "#003BB3",
+                    "on-surface-variant": "#424656",
+                    "on-surface": "#111c2d",
+                    "hero-blue-light": "#E6F0FF",
+                    "inverse-primary": "#b3c5ff",
+                    "momentum-orange-light": "#FFEDD5",
+                    "on-secondary": "#ffffff",
+                    "impact-green-light": "#DCFCE7",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#003fa4",
+                    "momentum-orange-dark": "#C2410C",
+                    "on-background": "#111c2d",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-bright": "#f9f9ff",
+                    "surface-container": "#e7eeff",
+                    "charcoal": "#475569",
+                    "tertiary-container": "#bc5200",
+                    "inverse-on-surface": "#ecf1ff",
+                    "secondary": "#006c49",
+                    "background": "#f9f9ff",
+                    "primary-fixed": "#dae1ff",
+                    "surface-container-low": "#f0f3ff",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "light-mist": "#F8FAFC",
+                    "win-gold": "#FBBF24",
+                    "on-primary": "#ffffff",
+                    "dark-slate": "#1E293B",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#783200",
+                    "surface-dim": "#cfdaf2",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "subtle-gray": "#94A3B8",
+                    "on-secondary-container": "#00714d",
+                    "on-tertiary-container": "#fff6f3",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d8e3fb",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dee8ff",
+                    "tertiary": "#954000",
+                    "win-gold-light": "#FFFBEB",
+                    "alert-red": "#EF4444",
+                    "impact-green-dark": "#059669",
+                    "win-gold-muted": "#FCD34D",
+                    "on-primary-fixed": "#001849",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c2c6d8",
+                    "surface-tint": "#0054d6",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d8e3fb",
+                    "on-primary-container": "#f8f7ff",
+                    "off-white": "#FAFBFF",
+                    "surface": "#f9f9ff",
+                    "primary-container": "#0066ff",
+                    "primary": "#0050cb",
+                    "tertiary-fixed": "#ffdbca",
+                    "outline": "#727687",
+                    "on-secondary-fixed": "#002113",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin": "24px",
+                    "4xl": "64px",
+                    "3xl": "48px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "5xl": "96px",
+                    "2xl": "32px",
+                    "md": "12px",
+                    "xl": "24px",
+                    "lg": "16px"
+            },
+            "fontFamily": {
+                    "mono": ["Monaco"],
+                    "body-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "mono": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display": ["56px", {"lineHeight": "64px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                    "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest fixed top-0 w-full z-50 shadow-sm border-none">
+<div class="flex justify-between items-center px-xl py-md w-full max-w-7xl mx-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">ImpactScore</div>
+<div class="hidden md:flex gap-xl items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Scores</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Charity</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Winnings</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Draws</a>
+</div>
+<div class="flex items-center gap-lg">
+<button class="bg-primary text-white px-lg py-sm rounded-lg font-title-md text-body-md hover:scale-[1.02] transition-transform duration-200">Profile</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative bg-light-mist py-5xl overflow-hidden min-h-[819px] flex items-center">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+<div class="absolute bottom-10 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
+<div class="absolute top-1/2 left-1/3 w-48 h-48 bg-win-gold/5 rounded-full blur-2xl animate-float" style="animation-delay: 4s"></div>
+<!-- Abstract Geometric Shapes -->
+<svg class="absolute top-0 right-0 opacity-[0.03] w-1/2 h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<polygon class="text-primary" fill="currentColor" points="100,0 100,100 0,100"></polygon>
+</svg>
+</div>
+<div class="container mx-auto px-xl relative z-10 grid lg:grid-cols-2 gap-3xl items-center">
+<div>
+<h1 class="font-display text-display text-on-surface mb-lg leading-tight md:text-headline-lg">
+                        Your Golf • Your Impact • <span class="text-primary">Your Prizes</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-2xl max-w-xl">
+                        Join a community where every stroke supports the causes you care about. Track your performance, compete for premium rewards, and fund global change—all on one modern platform.
+                    </p>
+<div class="flex flex-wrap gap-lg">
+<button class="bg-primary text-white font-title-md text-body-md px-4xl py-lg rounded-lg hover:bg-hero-blue-dark hover:scale-[1.02] transition-all duration-200 shadow-md">
+                            Get Started Free
+                        </button>
+<button class="border-2 border-primary text-primary font-title-md text-body-md px-4xl py-lg rounded-lg hover:bg-hero-blue-light transition-all duration-200">
+                            View Charities
+                        </button>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="relative z-10 bg-white p-lg rounded-xl shadow-2xl border border-outline-variant/30">
+<img class="w-full h-auto rounded-lg" data-alt="A clean, professional minimalist SaaS dashboard showing golf performance analytics with vibrant data visualization. The interface uses Hero Blue and Impact Green accents against a white background. The mood is sophisticated and tech-forward, emphasizing clarity and achievement without any clichéd golf elements like clubs or grass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRUfXmR0mipdgQaz0QZeeoXVcpa7L_H9Ejntm_2c1r3U8k4CyYlqkkNND_gzTCpqshoHfcsf6yNw0mZNkLAGu0eSZ9f3EYelCv4toxODDVHtrXl0GMwxoGuPM4BngcneYnu0anhkjfSFZxbXoT4JM4GxVYLWGygbP_qkb_-6K2NMTFpjXSWpsgg3Ac9fyY4s_C6PeDcJ4DK4h7yDh1fBvdso8_guAayt8KquHrdCKzEMniqqjP-fXMFTsO46zAHp1TXY0zjeawkWw"/>
+</div>
+<div class="absolute -bottom-xl -right-xl z-20 bg-win-gold-light p-lg rounded-xl shadow-xl border border-win-gold/20 max-w-[240px]">
+<div class="flex items-center gap-md mb-sm">
+<span class="material-symbols-outlined text-momentum-orange-dark" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-bold text-on-surface text-body-sm">Last Month's Winner</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Player #8492 just won a set of premium performance gear.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof Stats -->
+<section class="py-3xl container mx-auto px-xl">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-xl">
+<div class="text-center p-xl bg-white rounded-xl shadow-sm border-b-4 border-primary">
+<div class="font-display text-headline-md text-primary">12k+</div>
+<div class="font-body-sm text-subtle-gray uppercase tracking-widest">Active Players</div>
+</div>
+<div class="text-center p-xl bg-white rounded-xl shadow-sm border-b-4 border-impact-green-dark">
+<div class="font-display text-headline-md text-impact-green-dark">$450k+</div>
+<div class="font-body-sm text-subtle-gray uppercase tracking-widest">Funds Donated</div>
+</div>
+<div class="text-center p-xl bg-white rounded-xl shadow-sm border-b-4 border-momentum-orange-dark">
+<div class="font-display text-headline-md text-momentum-orange-dark">24</div>
+<div class="font-body-sm text-subtle-gray uppercase tracking-widest">Global Charities</div>
+</div>
+<div class="text-center p-xl bg-white rounded-xl shadow-sm border-b-4 border-win-gold">
+<div class="font-display text-headline-md text-win-gold">850+</div>
+<div class="font-body-sm text-subtle-gray uppercase tracking-widest">Prizes Awarded</div>
+</div>
+</div>
+</section>
+<!-- Value Propositions (3-Column Grid) -->
+<section class="py-5xl bg-surface-bright">
+<div class="container mx-auto px-xl">
+<div class="text-center mb-4xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Redefining the Game</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Focus on your performance while we handle the social impact. Our platform bridges the gap between your passion and purpose.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-2xl">
+<!-- Prop 1 -->
+<div class="bento-card bg-white p-2xl rounded-xl shadow-sm border border-outline-variant/20">
+<div class="w-16 h-16 bg-hero-blue-light flex items-center justify-center rounded-xl mb-xl">
+<span class="material-symbols-outlined text-primary text-[32px]">bar_chart</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-md">Track Performance</h3>
+<p class="text-on-surface-variant font-body-md">Advanced analytics for your rounds. Gain insights into your consistency and growth with our pro-level dashboard.</p>
+</div>
+<!-- Prop 2 -->
+<div class="bento-card bg-white p-2xl rounded-xl shadow-sm border border-outline-variant/20 border-t-4 border-t-win-gold">
+<div class="w-16 h-16 bg-win-gold-light flex items-center justify-center rounded-xl mb-xl">
+<span class="material-symbols-outlined text-momentum-orange-dark text-[32px]">emoji_events</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-md">Win Monthly Prizes</h3>
+<p class="text-on-surface-variant font-body-md">Your scores enter you into monthly draws. Compete for gear, experiences, and tech rewards from global partners.</p>
+</div>
+<!-- Prop 3 -->
+<div class="bento-card bg-white p-2xl rounded-xl shadow-sm border border-outline-variant/20 border-l-4 border-l-impact-green-dark">
+<div class="w-16 h-16 bg-impact-green-light flex items-center justify-center rounded-xl mb-xl">
+<span class="material-symbols-outlined text-impact-green-dark text-[32px]">favorite</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-md">Support Charities</h3>
+<p class="text-on-surface-variant font-body-md">A portion of every participation fee goes directly to world-class nonprofit organizations of your choice.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Charity Spotlight -->
+<section class="py-5xl bg-impact-green-light/30">
+<div class="container mx-auto px-xl">
+<div class="flex flex-col lg:flex-row items-center gap-4xl">
+<div class="lg:w-1/2">
+<div class="inline-block px-lg py-xs bg-impact-green-dark text-white rounded-full font-label-sm mb-lg">FEATURED CHARITY</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xl">The Clean Water Initiative</h2>
+<p class="text-on-surface-variant font-body-lg mb-2xl">
+                            Providing sustainable, clean drinking water to remote communities. By playing with ImpactScore this month, you help fund the construction of solar-powered water filtration systems.
+                        </p>
+<div class="flex items-center gap-2xl mb-2xl">
+<div>
+<div class="text-headline-sm font-bold text-impact-green-dark">$25,430</div>
+<div class="text-body-sm text-on-surface-variant uppercase tracking-wider">Raised this month</div>
+</div>
+<div class="h-12 w-[1px] bg-outline-variant"></div>
+<div>
+<div class="text-headline-sm font-bold text-on-surface">1,240</div>
+<div class="text-body-sm text-on-surface-variant uppercase tracking-wider">Lives Impacted</div>
+</div>
+</div>
+<button class="bg-impact-green-dark text-white px-2xl py-lg rounded-lg font-title-md hover:bg-secondary transition-all">Learn More About the Mission</button>
+</div>
+<div class="lg:w-1/2">
+<div class="relative">
+<img class="rounded-2xl shadow-xl w-full aspect-video object-cover" data-alt="A cinematic, high-quality photograph of a vibrant community water pump project in a bright, sunlit rural environment. The focus is on clean water splashing into a container, symbolizing life and health. The image is crisp, modern, and high-impact, avoiding stereotypical charity tropes in favor of professional empowerment-focused storytelling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2CNXlV5_L6g5IsyMvMEVcjD_eNU32Ub-4n5GF7tHGPisdr_aH8TC7EXtJeApmowrkpuu3X7fc0HD2HJ_FC8h9QQUhfI6eeGFNPO1wEpvZma1rA8mM9754D9gUQPnXodjBwzK7XOfDgOgEIx_eoMVVp3Pwy4gjGBQojNgsI7to2f6iovDcbEOPcfYo-AGvdnxWrIIgjQDQW4GT5oFtOn9GDvQEaETqGHrAr_t6MaeLIxZgds4P-sI0vVNLI6yH-x25p0_arJoi2Gs"/>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-md p-md rounded-lg shadow-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-impact-green-dark">verified</span>
+<span class="font-bold text-on-surface text-body-sm">Verified Impact</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom CTA Footer -->
+<section class="bg-dark-slate py-5xl text-center relative overflow-hidden">
+<!-- Subtle overlay effect -->
+<div class="absolute inset-0 bg-primary opacity-10 mix-blend-overlay"></div>
+<div class="container mx-auto px-xl relative z-10">
+<h2 class="font-headline-md text-headline-md text-white mb-lg">Ready to make an impact?</h2>
+<p class="text-subtle-gray font-body-lg mb-3xl max-w-xl mx-auto">Join thousands of golfers who are already winning big while giving back. No hidden fees, just pure impact.</p>
+<div class="flex flex-col sm:flex-row gap-lg justify-center items-center">
+<button class="bg-primary text-white font-title-md text-body-md px-5xl py-xl rounded-lg hover:bg-hero-blue-dark hover:scale-105 transition-all duration-300 shadow-xl">
+                        Create Your Free Account
+                    </button>
+<a class="text-white hover:text-primary transition-colors font-body-md flex items-center gap-sm" href="#">
+                        How it works <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-dark-slate text-subtle-gray border-t border-charcoal/30">
+<div class="flex flex-col items-center gap-xl py-3xl px-xl w-full">
+<div class="font-headline-sm text-headline-sm font-bold text-surface-container-lowest">ImpactScore</div>
+<div class="flex flex-wrap justify-center gap-2xl">
+<a class="text-subtle-gray hover:text-white font-body-sm transition-colors duration-200" href="#">Ready to make an impact?</a>
+<a class="text-subtle-gray hover:text-white font-body-sm transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-subtle-gray hover:text-white font-body-sm transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-subtle-gray hover:text-white font-body-sm transition-colors duration-200" href="#">Contact Us</a>
+</div>
+<p class="font-body-sm text-body-sm mt-xl opacity-60">© 2024 ImpactScore. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple intersection observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-card').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

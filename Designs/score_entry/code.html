@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactScore - Score Entry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom progress bar for destructive action delay */
+        .destructive-btn-hover:hover .progress-bar {
+            width: 100%;
+            transition: width 2s linear;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b3c5ff",
+                        "on-tertiary-fixed": "#341100",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#d8e3fb",
+                        "subtle-gray": "#94A3B8",
+                        "on-secondary-fixed": "#002113",
+                        "on-error": "#ffffff",
+                        "alert-red": "#EF4444",
+                        "primary-container": "#0066ff",
+                        "outline-variant": "#c2c6d8",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#dae1ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e7eeff",
+                        "charcoal": "#475569",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#111c2d",
+                        "secondary-container": "#6cf8bb",
+                        "secondary": "#006c49",
+                        "tertiary": "#954000",
+                        "on-tertiary-container": "#fff6f3",
+                        "on-secondary-fixed-variant": "#005236",
+                        "impact-green-light": "#DCFCE7",
+                        "on-tertiary": "#ffffff",
+                        "hero-blue-light": "#E6F0FF",
+                        "surface-dim": "#cfdaf2",
+                        "inverse-surface": "#263143",
+                        "win-gold": "#FBBF24",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-error-container": "#93000a",
+                        "win-gold-muted": "#FCD34D",
+                        "on-background": "#111c2d",
+                        "surface-container-low": "#f0f3ff",
+                        "momentum-orange-light": "#FFEDD5",
+                        "on-primary-container": "#f8f7ff",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface": "#f9f9ff",
+                        "impact-green-dark": "#059669",
+                        "hero-blue-dark": "#003BB3",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "off-white": "#FAFBFF",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "momentum-orange-dark": "#C2410C",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-container": "#00714d",
+                        "dark-slate": "#1E293B",
+                        "surface-container-high": "#dee8ff",
+                        "background": "#f9f9ff",
+                        "primary": "#0050cb",
+                        "win-gold-light": "#FFFBEB",
+                        "outline": "#727687",
+                        "tertiary-container": "#bc5200",
+                        "on-surface-variant": "#424656",
+                        "surface-tint": "#0054d6",
+                        "on-primary-fixed": "#001849",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "light-mist": "#F8FAFC"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "2xl": "32px",
+                        "3xl": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "5xl": "96px",
+                        "4xl": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display": ["56px", {"lineHeight": "64px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation Shell -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest shadow-sm z-50 py-xl px-lg">
+<div class="mb-5xl">
+<h1 class="font-display text-headline-sm font-bold text-hero-blue-dark">Charity Golf</h1>
+<p class="text-on-surface-variant font-body-sm">Premium Member</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<!-- Active Tab: Scores -->
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-low hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-body-md">Scores</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="font-body-md">Charity</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md">Winnings</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-body-md">Draws</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-xl border-t border-surface-container space-y-sm">
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-bold hover:bg-hero-blue-dark transform hover:scale-[1.02] transition-all duration-200">
+                Donate Now
+            </button>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen flex flex-col items-center justify-center p-xl md:p-5xl">
+<!-- Center Container -->
+<div class="w-full max-w-[600px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Header Section -->
+<div class="mb-3xl text-center">
+<h2 class="font-display text-headline-sm text-primary mb-sm">Record Your Latest Scores</h2>
+<p class="font-body-md text-on-surface-variant">Enter your 5 most recent 18-hole scores to qualify for the March draw.</p>
+</div>
+<!-- Score Form Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-xl md:p-3xl border border-surface-container">
+<form class="space-y-xl" id="score-entry-form">
+<!-- Form Groups -->
+<div class="space-y-lg" id="score-fields-container">
+<!-- Score Entry 1 -->
+<div class="group relative bg-off-white p-lg rounded-lg border border-subtle-gray/20 transition-all hover:border-primary/30">
+<h4 class="font-title-md text-on-surface mb-md">Score 1 (Most Recent)</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Points (1-45)</label>
+<input class="score-input w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" max="45" min="1" placeholder="e.g. 38" required="" type="number"/>
+<span class="validation-icon absolute right-4 bottom-[14px] material-symbols-outlined text-sm opacity-0 transition-opacity"></span>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Round Date</label>
+<input class="w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" required="" type="date"/>
+</div>
+</div>
+</div>
+<!-- Score Entry 2 -->
+<div class="group relative bg-off-white p-lg rounded-lg border border-subtle-gray/20 transition-all hover:border-primary/30">
+<h4 class="font-title-md text-on-surface mb-md">Score 2</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Points (1-45)</label>
+<input class="score-input w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" max="45" min="1" placeholder="e.g. 36" required="" type="number"/>
+<span class="validation-icon absolute right-4 bottom-[14px] material-symbols-outlined text-sm opacity-0 transition-opacity"></span>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Round Date</label>
+<input class="w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" required="" type="date"/>
+</div>
+</div>
+</div>
+<!-- Score Entry 3 -->
+<div class="group relative bg-off-white p-lg rounded-lg border border-subtle-gray/20 transition-all hover:border-primary/30">
+<h4 class="font-title-md text-on-surface mb-md">Score 3</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Points (1-45)</label>
+<input class="score-input w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" max="45" min="1" placeholder="e.g. 40" required="" type="number"/>
+<span class="validation-icon absolute right-4 bottom-[14px] material-symbols-outlined text-sm opacity-0 transition-opacity"></span>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Round Date</label>
+<input class="w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" required="" type="date"/>
+</div>
+</div>
+</div>
+<!-- Score Entry 4 -->
+<div class="group relative bg-off-white p-lg rounded-lg border border-subtle-gray/20 transition-all hover:border-primary/30">
+<h4 class="font-title-md text-on-surface mb-md">Score 4</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Points (1-45)</label>
+<input class="score-input w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" max="45" min="1" placeholder="e.g. 34" required="" type="number"/>
+<span class="validation-icon absolute right-4 bottom-[14px] material-symbols-outlined text-sm opacity-0 transition-opacity"></span>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Round Date</label>
+<input class="w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" required="" type="date"/>
+</div>
+</div>
+</div>
+<!-- Score Entry 5 -->
+<div class="group relative bg-off-white p-lg rounded-lg border border-subtle-gray/20 transition-all hover:border-primary/30">
+<h4 class="font-title-md text-on-surface mb-md">Score 5</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Points (1-45)</label>
+<input class="score-input w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" max="45" min="1" placeholder="e.g. 39" required="" type="number"/>
+<span class="validation-icon absolute right-4 bottom-[14px] material-symbols-outlined text-sm opacity-0 transition-opacity"></span>
+</div>
+<div class="relative">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Round Date</label>
+<input class="w-full bg-off-white border-subtle-gray rounded-lg py-md px-lg focus:border-2 focus:border-primary focus:ring-0 transition-all" required="" type="date"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-md pt-xl border-t border-surface-container">
+<button class="w-full bg-primary text-on-primary py-lg rounded-lg font-bold text-body-md hover:bg-hero-blue-dark transform hover:scale-[1.01] transition-all shadow-sm active:scale-95" type="submit">
+                            Submit Scores
+                        </button>
+<div class="flex flex-col md:flex-row items-center justify-between gap-md">
+<button class="destructive-btn-hover relative overflow-hidden w-full md:w-auto px-xl py-md border-2 border-alert-red text-alert-red rounded-lg font-bold transition-all hover:bg-alert-red hover:text-on-error" type="reset">
+<div class="progress-bar"></div>
+<span class="relative z-10">Clear Form</span>
+</button>
+<a class="text-primary font-bold hover:underline py-md flex items-center space-x-xs" href="#">
+<span>View History</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+</form>
+</div>
+<!-- Footer Meta -->
+<p class="mt-xl text-center text-on-surface-variant font-body-sm opacity-60">
+                Validation follows standard R&amp;A guidelines for score reporting.
+            </p>
+</div>
+</main>
+<!-- Mobile Navigation (Bottom Bar) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-surface-container flex items-center justify-around py-sm px-lg z-50">
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="text-[10px]">Scores</span>
+</a>
+<button class="flex flex-col items-center justify-center -mt-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="text-[10px]">Charity</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px]">Menu</span>
+</a>
+</nav>
+<script>
+        // Real-time validation logic
+        const scoreInputs = document.querySelectorAll('.score-input');
+        
+        scoreInputs.forEach(input => {
+            input.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                const icon = e.target.parentElement.querySelector('.validation-icon');
+                
+                if (e.target.value === "") {
+                    icon.style.opacity = '0';
+                    e.target.classList.remove('border-impact-green-dark', 'border-alert-red');
+                    return;
+                }
+
+                if (val >= 1 && val <= 45) {
+                    icon.textContent = 'check_circle';
+                    icon.classList.remove('text-alert-red');
+                    icon.classList.add('text-impact-green-dark');
+                    icon.style.opacity = '1';
+                    e.target.classList.add('border-impact-green-dark');
+                    e.target.classList.remove('border-alert-red');
+                } else {
+                    icon.textContent = 'cancel';
+                    icon.classList.remove('text-impact-green-dark');
+                    icon.classList.add('text-alert-red');
+                    icon.style.opacity = '1';
+                    e.target.classList.add('border-alert-red');
+                    e.target.classList.remove('border-impact-green-dark');
+                }
+            });
+        });
+
+        // Simple form handling
+        const form = document.getElementById('score-entry-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Submitting...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = 'Scores Submitted!';
+                btn.classList.replace('bg-primary', 'bg-impact-green-dark');
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('bg-impact-green-dark', 'bg-primary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+
+        // Reset icon handling
+        form.addEventListener('reset', () => {
+            scoreInputs.forEach(input => {
+                const icon = input.parentElement.querySelector('.validation-icon');
+                icon.style.opacity = '0';
+                input.classList.remove('border-impact-green-dark', 'border-alert-red');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Draw Management | ImpactScore Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .destructive-btn-wait {
+            position: relative;
+            overflow: hidden;
+        }
+        .destructive-btn-wait::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(255,255,255,0.4);
+            width: 0%;
+            transition: width 2s linear;
+        }
+        .destructive-btn-wait:hover::after {
+            width: 100%;
+        }
+        [disabled] {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "charcoal": "#475569",
+                      "momentum-orange-light": "#FFEDD5",
+                      "surface-container-high": "#dee8ff",
+                      "surface-dim": "#cfdaf2",
+                      "primary": "#0050cb",
+                      "surface-container-low": "#f0f3ff",
+                      "on-secondary-fixed-variant": "#005236",
+                      "off-white": "#FAFBFF",
+                      "hero-blue-dark": "#003BB3",
+                      "subtle-gray": "#94A3B8",
+                      "alert-red": "#EF4444",
+                      "outline": "#727687",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#bc5200",
+                      "on-primary-container": "#f8f7ff",
+                      "primary-container": "#0066ff",
+                      "on-error-container": "#93000a",
+                      "background": "#f9f9ff",
+                      "secondary": "#006c49",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#111c2d",
+                      "on-primary-fixed": "#001849",
+                      "win-gold": "#FBBF24",
+                      "surface-variant": "#d8e3fb",
+                      "surface-container": "#e7eeff",
+                      "momentum-orange-dark": "#C2410C",
+                      "tertiary-fixed": "#ffdbca",
+                      "inverse-surface": "#263143",
+                      "on-background": "#111c2d",
+                      "on-primary-fixed-variant": "#003fa4",
+                      "on-secondary": "#ffffff",
+                      "win-gold-muted": "#FCD34D",
+                      "surface-container-highest": "#d8e3fb",
+                      "impact-green-light": "#DCFCE7",
+                      "secondary-fixed-dim": "#4edea3",
+                      "secondary-fixed": "#6ffbbe",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb690",
+                      "impact-green-dark": "#059669",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "primary-fixed-dim": "#b3c5ff",
+                      "inverse-primary": "#b3c5ff",
+                      "inverse-on-surface": "#ecf1ff",
+                      "outline-variant": "#c2c6d8",
+                      "surface-tint": "#0054d6",
+                      "tertiary": "#954000",
+                      "on-secondary-container": "#00714d",
+                      "on-tertiary-container": "#fff6f3",
+                      "dark-slate": "#1E293B",
+                      "hero-blue-light": "#E6F0FF",
+                      "secondary-container": "#6cf8bb",
+                      "on-tertiary-fixed-variant": "#783200",
+                      "surface": "#f9f9ff",
+                      "error": "#ba1a1a",
+                      "light-mist": "#F8FAFC",
+                      "win-gold-light": "#FFFBEB",
+                      "on-surface-variant": "#424656",
+                      "on-secondary-fixed": "#002113",
+                      "primary-fixed": "#dae1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "12px",
+                      "5xl": "96px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "2xl": "32px",
+                      "lg": "16px",
+                      "4xl": "64px",
+                      "3xl": "48px",
+                      "gutter": "24px",
+                      "xl": "24px",
+                      "margin": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter", "sans-serif"],
+                      "title-md": ["Inter", "sans-serif"],
+                      "body-sm": ["Inter", "sans-serif"],
+                      "headline-md": ["Inter", "sans-serif"],
+                      "label-sm": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "headline-sm": ["Inter", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-dark-slate shadow-md flex flex-col py-xl z-50">
+<div class="px-lg mb-4xl">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">ImpactScore</h1>
+<p class="font-label-sm text-label-sm text-subtle-gray opacity-80 uppercase tracking-widest">Admin Console</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<!-- Navigation Items mapped from JSON logic -->
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:bg-charcoal hover:text-off-white mx-md rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:bg-charcoal hover:text-off-white mx-md rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:bg-charcoal hover:text-off-white mx-md rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">volunteer_activism</span>
+<span class="font-label-sm text-label-sm">Charity Partners</span>
+</a>
+<!-- Active State: Draws (Semantic mapping for context) -->
+<a class="flex items-center gap-md px-lg py-md bg-primary text-on-primary rounded-lg mx-md shadow-sm scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label-sm text-label-sm">Prizes</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:bg-charcoal hover:text-off-white mx-md rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Impact Metrics</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:bg-charcoal hover:text-off-white mx-md rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-md space-y-xs">
+<button class="w-full mb-lg flex items-center justify-center gap-sm bg-primary-container text-on-primary-container py-md rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                New Campaign
+            </button>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface-container-lowest shadow-sm flex justify-between items-center px-gutter z-40">
+<div class="flex items-center gap-lg w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-subtle-gray">search</span>
+<input class="w-full bg-light-mist border-none rounded-full py-2 pl-10 pr-4 text-body-sm focus:ring-2 focus:ring-primary" placeholder="Search draws, participants, or metrics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female administrator in a clean office setting, featuring high-key lighting and a blurred background of a modern tech office. The style is sharp, corporate, and minimalist, using a soft color palette of light blues and greys to match the modern SaaS interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-koa3YkY8QQ6_LqNUbIgmjGenD02scnEZmYSPqc4rv_3VZg5uzwf32g6X_i1IwOsm2qGAmwfwhavdvO-0KmZC7V30YIMhy4eML2XdxEI9O9PFPy9bPDfulbn3cpylURi4gl7kClJNeGCSUHjj0C8M_rP6mAgwXcKO--CNpa5zO_d6Bxqbo7urmsg_QXZixOrT4XQQ8usWsTawg-yxdrEtB7rIMY_DxHLuQo0SqyyIuG9rEfvVEilpx5mYv_hz3TKh7SWyKr5Gf9s"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-gutter">
+<div class="max-w-7xl mx-auto space-y-xl">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Draw Management</h2>
+<p class="text-on-surface-variant font-body-md">Configure and execute monthly prize distributions.</p>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-md border-2 border-primary text-primary rounded-lg font-label-sm hover:bg-hero-blue-light transition-all">
+                        Download Report
+                    </button>
+<button class="px-lg py-md bg-primary text-on-primary rounded-lg font-label-sm flex items-center gap-sm shadow-sm hover:scale-[1.02] transition-all">
+<span class="material-symbols-outlined">add</span>
+                        Manual Entry
+                    </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Current Draw Card (Priority) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-xl rounded-xl shadow-sm border-t-4 border-primary relative overflow-hidden">
+<div class="flex justify-between items-start mb-2xl">
+<div>
+<span class="inline-flex items-center px-lg py-xs rounded-full bg-momentum-orange-light text-momentum-orange-dark font-label-sm uppercase tracking-wider mb-sm">
+<span class="material-symbols-outlined text-[14px] mr-xs">pending</span>
+                                Pending Simulation
+                            </span>
+<h3 class="font-headline-sm text-headline-sm">March 2026 Distribution</h3>
+<p class="text-on-surface-variant font-body-md mt-xs">Total Pool: <span class="font-bold text-on-surface">$124,500.00</span></p>
+</div>
+<div class="text-right">
+<p class="text-label-sm text-subtle-gray">Days Remaining</p>
+<p class="text-headline-md font-bold text-primary">12</p>
+</div>
+</div>
+<!-- Progress/Status Area -->
+<div class="grid grid-cols-3 gap-md mb-2xl">
+<div class="bg-light-mist p-md rounded-lg border border-outline-variant/30">
+<p class="text-label-sm text-subtle-gray mb-xs">Active Entries</p>
+<p class="font-title-md">42,891</p>
+</div>
+<div class="bg-light-mist p-md rounded-lg border border-outline-variant/30">
+<p class="text-label-sm text-subtle-gray mb-xs">Charity Shares</p>
+<p class="font-title-md">115 Partnerships</p>
+</div>
+<div class="bg-light-mist p-md rounded-lg border border-outline-variant/30">
+<p class="text-label-sm text-subtle-gray mb-xs">Draw Logic</p>
+<p class="font-title-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+                                Algorithmic
+                            </p>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="flex-1 bg-primary text-on-primary py-lg rounded-lg font-title-md flex items-center justify-center gap-md hover:bg-hero-blue-dark hover:scale-[1.02] transition-all duration-200" id="runSim" onclick="simulateDraw()">
+<span class="material-symbols-outlined">play_arrow</span>
+                            Run Simulation
+                        </button>
+<button class="destructive-btn-wait flex-1 bg-alert-red text-on-primary py-lg rounded-lg font-title-md flex items-center justify-center gap-md transition-all duration-200" disabled="" id="publishResults">
+<span class="material-symbols-outlined">publish</span>
+                            Publish Results
+                        </button>
+</div>
+<!-- Atmospheric Micro-interaction: Simulation Pulse -->
+<div class="hidden absolute inset-0 bg-white/60 flex items-center justify-center z-10" id="simPulse">
+<div class="text-center">
+<div class="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-md"></div>
+<p class="font-title-md text-primary animate-pulse">Running Monte Carlo Simulation...</p>
+</div>
+</div>
+</div>
+<!-- Config Section -->
+<div class="bg-white p-xl rounded-xl shadow-sm border-l-4 border-win-gold">
+<h3 class="font-title-md mb-xl flex items-center gap-md">
+<span class="material-symbols-outlined text-win-gold">tune</span>
+                        Draw Parameters
+                    </h3>
+<div class="space-y-xl">
+<div>
+<label class="font-label-sm text-on-surface uppercase tracking-wider block mb-md">Selection Logic</label>
+<div class="space-y-md">
+<label class="flex items-center p-md border-2 border-outline-variant rounded-lg cursor-pointer hover:border-primary transition-all group has-[:checked]:border-primary has-[:checked]:bg-hero-blue-light">
+<input class="hidden" name="logic" type="radio" value="random"/>
+<div class="mr-md w-5 h-5 rounded-full border-2 border-outline-variant group-has-[:checked]:border-primary group-has-[:checked]:bg-primary flex items-center justify-center">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<div>
+<p class="font-body-md font-semibold">Random Selection</p>
+<p class="text-body-sm text-on-surface-variant">Standard RNG weighted by points.</p>
+</div>
+</label>
+<label class="flex items-center p-md border-2 border-primary rounded-lg cursor-pointer hover:border-primary transition-all group bg-hero-blue-light">
+<input checked="" class="hidden" name="logic" type="radio" value="algorithmic"/>
+<div class="mr-md w-5 h-5 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<div>
+<p class="font-body-md font-semibold">Impact Algorithmic</p>
+<p class="text-body-sm text-on-surface-variant">Weighted by donation velocity and tenure.</p>
+</div>
+</label>
+</div>
+</div>
+<div>
+<label class="font-label-sm text-on-surface uppercase tracking-wider block mb-md">Validation Threshold</label>
+<input class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between text-body-sm text-subtle-gray mt-xs">
+<span>Conservative</span>
+<span>Balanced</span>
+<span>Growth</span>
+</div>
+</div>
+<div class="p-md bg-win-gold-light rounded-lg border border-win-gold-muted/30">
+<p class="text-body-sm text-tertiary font-medium italic">
+                                "Algorithmic logic currently optimizes for long-term donor retention (Est. +14% next quarter)."
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Past Draws Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-xl py-lg border-b border-outline-variant/20 flex justify-between items-center">
+<h3 class="font-title-md">Past Distributions</h3>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-subtle-gray cursor-pointer">filter_list</span>
+<span class="material-symbols-outlined text-subtle-gray cursor-pointer">more_vert</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-light-mist">
+<tr>
+<th class="px-xl py-md font-label-sm text-on-surface-variant uppercase">Month</th>
+<th class="px-xl py-md font-label-sm text-on-surface-variant uppercase">Type</th>
+<th class="px-xl py-md font-label-sm text-on-surface-variant uppercase">Winners</th>
+<th class="px-xl py-md font-label-sm text-on-surface-variant uppercase">Total Pool</th>
+<th class="px-xl py-md font-label-sm text-on-surface-variant uppercase">Status</th>
+<th class="px-xl py-md font-label-sm text-on-surface-variant uppercase text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-light-mist transition-colors group">
+<td class="px-xl py-lg font-body-md font-medium">February 2026</td>
+<td class="px-xl py-lg font-body-md">Algorithmic</td>
+<td class="px-xl py-lg font-body-md">1,402</td>
+<td class="px-xl py-lg font-body-md font-bold text-impact-green-dark">$118,200.00</td>
+<td class="px-xl py-lg font-body-md">
+<span class="px-md py-xs bg-impact-green-light text-impact-green-dark rounded-full font-label-sm">Finalized</span>
+</td>
+<td class="px-xl py-lg font-body-md text-right">
+<button class="text-primary font-semibold hover:underline flex items-center gap-xs ml-auto">
+                                        View Details <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-light-mist transition-colors group">
+<td class="px-xl py-lg font-body-md font-medium">January 2026</td>
+<td class="px-xl py-lg font-body-md">Random</td>
+<td class="px-xl py-lg font-body-md">1,250</td>
+<td class="px-xl py-lg font-body-md font-bold text-impact-green-dark">$110,000.00</td>
+<td class="px-xl py-lg font-body-md">
+<span class="px-md py-xs bg-impact-green-light text-impact-green-dark rounded-full font-label-sm">Finalized</span>
+</td>
+<td class="px-xl py-lg font-body-md text-right">
+<button class="text-primary font-semibold hover:underline flex items-center gap-xs ml-auto">
+                                        View Details <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-light-mist transition-colors group">
+<td class="px-xl py-lg font-body-md font-medium">December 2025</td>
+<td class="px-xl py-lg font-body-md">Algorithmic</td>
+<td class="px-xl py-lg font-body-md">1,680</td>
+<td class="px-xl py-lg font-body-md font-bold text-impact-green-dark">$145,000.00</td>
+<td class="px-xl py-lg font-body-md">
+<span class="px-md py-xs bg-impact-green-light text-impact-green-dark rounded-full font-label-sm">Finalized</span>
+</td>
+<td class="px-xl py-lg font-body-md text-right">
+<button class="text-primary font-semibold hover:underline flex items-center gap-xs ml-auto">
+                                        View Details <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-xl py-md bg-light-mist border-t border-outline-variant/20 flex items-center justify-between">
+<p class="text-body-sm text-subtle-gray">Showing 3 of 24 historic distributions</p>
+<div class="flex gap-sm">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant bg-white shadow-sm font-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors font-label-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento Mini-Widgets -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xl">
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-hero-blue-light text-primary rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">group</span>
+</div>
+<p class="text-headline-sm text-on-surface">15.2k</p>
+<p class="text-label-sm text-subtle-gray uppercase">New Users</p>
+</div>
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-impact-green-light text-impact-green-dark rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<p class="text-headline-sm text-on-surface">$2.4M</p>
+<p class="text-label-sm text-subtle-gray uppercase">Total Impact</p>
+</div>
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col items-center text-center border-b-4 border-momentum-orange-dark">
+<div class="w-12 h-12 bg-momentum-orange-light text-momentum-orange-dark rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<p class="text-headline-sm text-on-surface">98.2%</p>
+<p class="text-label-sm text-subtle-gray uppercase">Uptime</p>
+</div>
+<div class="bg-white p-lg rounded-xl shadow-sm flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-win-gold-light text-win-gold rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<p class="text-headline-sm text-on-surface">422</p>
+<p class="text-label-sm text-subtle-gray uppercase">Top Tier Winners</p>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function simulateDraw() {
+            const pulse = document.getElementById('simPulse');
+            const runBtn = document.getElementById('runSim');
+            const publishBtn = document.getElementById('publishResults');
+            
+            pulse.classList.remove('hidden');
+            runBtn.disabled = true;
+            
+            // Artificial delay to simulate heavy processing
+            setTimeout(() => {
+                pulse.classList.add('hidden');
+                runBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Simulated';
+                runBtn.classList.replace('bg-primary', 'bg-impact-green-dark');
+                publishBtn.removeAttribute('disabled');
+                
+                // Show a mini notification or status update
+                const statusBadge = document.querySelector('.bg-momentum-orange-light');
+                statusBadge.classList.replace('bg-momentum-orange-light', 'bg-impact-green-light');
+                statusBadge.classList.replace('text-momentum-orange-dark', 'text-impact-green-dark');
+                statusBadge.innerHTML = '<span class="material-symbols-outlined text-[14px] mr-xs">verified</span> Simulated & Verified';
+            }, 2500);
+        }
+
+        // Add interaction for radio buttons border toggle
+        const radios = document.querySelectorAll('input[name="logic"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('label.has-\\[\\:checked\\]\\:border-primary').forEach(label => {
+                    label.classList.remove('bg-hero-blue-light', 'border-primary');
+                    label.querySelector('.w-5').classList.remove('bg-primary', 'border-primary');
+                });
+                
+                const parentLabel = radio.closest('label');
+                parentLabel.classList.add('bg-hero-blue-light', 'border-primary');
+                parentLabel.querySelector('.w-5').classList.add('bg-primary', 'border-primary');
+            });
+        });
+
+        // Hover stall logic for destructive button
+        const publishBtn = document.getElementById('publishResults');
+        let hoverTimer;
+        
+        publishBtn.addEventListener('mouseenter', () => {
+            if(!publishBtn.disabled) {
+                hoverTimer = setTimeout(() => {
+                    publishBtn.classList.remove('opacity-50');
+                }, 2000);
+            }
+        });
+
+        publishBtn.addEventListener('mouseleave', () => {
+            clearTimeout(hoverTimer);
+        });
+
+        publishBtn.addEventListener('click', (e) => {
+            // Only allow click after 2s hover (visual cue handled by CSS)
+            // Real apps would check timestamp, here we just trigger for demo
+            alert('Draw results have been published and notifications sent to winners!');
+        });
+    </script>
+</body></html>

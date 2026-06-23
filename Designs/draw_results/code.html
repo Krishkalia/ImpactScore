@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Draw Results | ImpactScore</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .draw-ball {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .draw-ball:hover {
+            transform: translateY(-8px) scale(1.1);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#6cf8bb",
+                    "on-background": "#111c2d",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-variant": "#d8e3fb",
+                    "on-primary-fixed-variant": "#003fa4",
+                    "outline-variant": "#c2c6d8",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "impact-green-dark": "#059669",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#dae1ff",
+                    "win-gold": "#FBBF24",
+                    "surface": "#f9f9ff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-primary-container": "#f8f7ff",
+                    "off-white": "#FAFBFF",
+                    "secondary": "#006c49",
+                    "dark-slate": "#1E293B",
+                    "tertiary-container": "#bc5200",
+                    "on-error": "#ffffff",
+                    "impact-green-light": "#DCFCE7",
+                    "win-gold-muted": "#FCD34D",
+                    "tertiary": "#954000",
+                    "on-secondary-fixed": "#002113",
+                    "surface-bright": "#f9f9ff",
+                    "primary-container": "#0066ff",
+                    "light-mist": "#F8FAFC",
+                    "background": "#f9f9ff",
+                    "surface-tint": "#0054d6",
+                    "win-gold-light": "#FFFBEB",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "subtle-gray": "#94A3B8",
+                    "momentum-orange-dark": "#C2410C",
+                    "on-tertiary-fixed-variant": "#783200",
+                    "inverse-primary": "#b3c5ff",
+                    "surface-dim": "#cfdaf2",
+                    "on-secondary-container": "#00714d",
+                    "on-surface-variant": "#424656",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-container": "#e7eeff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#dee8ff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#111c2d",
+                    "alert-red": "#EF4444",
+                    "secondary-fixed": "#6ffbbe",
+                    "hero-blue-light": "#E6F0FF",
+                    "on-primary-fixed": "#001849",
+                    "on-tertiary-container": "#fff6f3",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "outline": "#727687",
+                    "on-tertiary-fixed": "#341100",
+                    "inverse-on-surface": "#ecf1ff",
+                    "hero-blue-dark": "#003BB3",
+                    "inverse-surface": "#263143",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "momentum-orange-light": "#FFEDD5",
+                    "surface-container-highest": "#d8e3fb",
+                    "primary": "#0050cb",
+                    "charcoal": "#475569"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "24px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "2xl": "32px",
+                    "xs": "4px",
+                    "lg": "16px",
+                    "md": "12px",
+                    "margin": "24px",
+                    "3xl": "48px",
+                    "5xl": "96px",
+                    "4xl": "64px"
+            },
+            "fontFamily": {
+                    "mono": ["Monaco"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "title-md": ["Inter"]
+            },
+            "fontSize": {
+                    "mono": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "display": ["56px", {"lineHeight": "64px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                    "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                    "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- Top Navigation Shell -->
+<header class="bg-surface-container-lowest shadow-sm docked full-width top-0 sticky z-50">
+<nav class="flex justify-between items-center px-xl py-md w-full max-w-7xl mx-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">ImpactScore</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Scores</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Charity</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Winnings</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md" href="#">Draws</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:scale-[1.02] transition-transform">notifications</button>
+<div class="flex items-center gap-sm">
+<span class="font-body-md text-on-surface-variant">Profile</span>
+<img alt="User avatar" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-FZliKDADZd7W5HKVmwjiqpP9MGCzycZA97uRz6c1UpfMx-ZHx0A1yqKAjIrUK6uwVrxxLpsUB0CwXIfe4t3bFy0XLXruIaY8-uN8mhbQB8T4D34I1XBUf61_6wPg1eqiVGDb57YmqmEwNj9qq5lPlxver7pqM9t3iBDKFILmCw-tzRRVeF3BHYZF35__kjAt3BnSEV9N9ARi-Rlx1rTOaKRmvpMyRZu0bkEEL4F3sLnnsb_dP__M2NrpF-kS8Gw5zpbinpy5Mx8"/>
+</div>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-xl py-3xl">
+<!-- Hero Section -->
+<section class="mb-5xl text-center relative">
+<div class="absolute inset-0 -z-10 overflow-hidden">
+
+</div>
+<div class="inline-flex items-center gap-sm bg-win-gold-light text-momentum-orange-dark px-lg py-xs rounded-full mb-lg font-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">verified</span>
+                March 2024 Draw Official Results
+            </div>
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-md">Generosity Rewarded</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">See how your impact scores translated into winnings this month.</p>
+</section>
+<!-- Bento Grid Results Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl">
+<!-- Winning Numbers Block (Featured) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-3xl shadow-sm border-t-4 border-primary">
+<div class="flex justify-between items-start mb-2xl">
+<div>
+<h2 class="font-title-md text-title-md text-on-background">The Winning Sequence</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Selected via verifiable random impact-weighting</p>
+</div>
+<button class="flex items-center gap-sm text-primary font-label-sm uppercase hover:underline">
+<span class="material-symbols-outlined">receipt_long</span>
+                        Verify Hash
+                    </button>
+</div>
+<div class="flex flex-wrap justify-center md:justify-start gap-xl py-xl">
+<div class="draw-ball w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center text-on-primary font-headline-sm text-headline-sm shadow-lg">12</div>
+<div class="draw-ball w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center text-on-primary font-headline-sm text-headline-sm shadow-lg">28</div>
+<div class="draw-ball w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center text-on-primary font-headline-sm text-headline-sm shadow-lg">34</div>
+<div class="draw-ball w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center text-on-primary font-headline-sm text-headline-sm shadow-lg">45</div>
+<div class="draw-ball w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center text-on-primary font-headline-sm text-headline-sm shadow-lg">51</div>
+</div>
+</div>
+<!-- Personalized Success Card -->
+<div class="md:col-span-4 bg-win-gold-light rounded-xl p-3xl border-t-4 border-win-gold shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-8 -top-8 opacity-10">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface mb-xs">Your Result</h2>
+<div class="bg-win-gold-muted/20 inline-block px-sm py-xs rounded-lg font-label-sm text-momentum-orange-dark mb-xl">MATCHED 3 NUMBERS</div>
+<p class="font-headline-sm text-headline-sm text-on-background font-bold">$150.00</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pending distribution to wallet</p>
+</div>
+<button class="w-full mt-xl py-md bg-primary text-on-primary rounded-lg font-label-sm uppercase tracking-wide hover:scale-[1.02] transition-transform shadow-md">
+                    Claim Prize
+                </button>
+</div>
+<!-- Tier Breakdown (Glassmorphism List) -->
+<div class="md:col-span-12 lg:col-span-7 bg-surface-container-high/40 rounded-xl p-3xl border-l-4 border-momentum-orange shadow-sm">
+<h3 class="font-title-md text-title-md text-on-background mb-xl">Prize Pool Breakdown</h3>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-lg bg-surface-container-lowest rounded-lg border border-outline-variant hover:scale-[1.01] transition-transform cursor-default">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-full bg-win-gold/10 flex items-center justify-center text-win-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-on-background">5 Matches (Jackpot)</p>
+<p class="font-body-sm text-on-surface-variant">0 Winners</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-lg font-bold text-primary">$25,000.00</p>
+<p class="font-label-sm text-subtle-gray">Rollover to April</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-lg bg-surface-container-lowest rounded-lg border border-outline-variant hover:scale-[1.01] transition-transform cursor-default">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">filter_4</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-on-background">4 Matches</p>
+<p class="font-body-sm text-on-surface-variant">12 Winners</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-lg font-bold text-primary">$1,250.00</p>
+<p class="font-label-sm text-subtle-gray">Each</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-lg bg-primary/5 rounded-lg border border-primary/20 hover:scale-[1.01] transition-transform cursor-default">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">filter_3</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-on-background">3 Matches (Your Tier)</p>
+<p class="font-body-sm text-on-surface-variant">142 Winners</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-lg font-bold text-primary">$150.00</p>
+<p class="font-label-sm text-subtle-gray">Each</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact Statistics -->
+<div class="md:col-span-12 lg:col-span-5 grid grid-cols-1 gap-xl">
+<div class="bg-surface-container-lowest rounded-xl p-2xl shadow-sm border-t-4 border-impact-green flex items-center gap-xl">
+<div class="w-16 h-16 rounded-xl bg-impact-green-light flex items-center justify-center text-impact-green-dark">
+<span class="material-symbols-outlined text-[32px]">volunteer_activism</span>
+</div>
+<div>
+<p class="font-label-sm text-subtle-gray uppercase tracking-widest">Charity Impact</p>
+<p class="font-headline-sm text-headline-sm text-on-background">$42,800</p>
+<p class="font-body-sm text-on-surface-variant">Generated for reforestation</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-2xl shadow-sm border-t-4 border-momentum-orange flex items-center gap-xl">
+<div class="w-16 h-16 rounded-xl bg-momentum-orange-light flex items-center justify-center text-momentum-orange-dark">
+<span class="material-symbols-outlined text-[32px]">trending_up</span>
+</div>
+<div>
+<p class="font-label-sm text-subtle-gray uppercase tracking-widest">Score Momentum</p>
+<p class="font-headline-sm text-headline-sm text-on-background">+14%</p>
+<p class="font-body-sm text-on-surface-variant">Growth in community engagement</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Next Draw Teaser -->
+<section class="mt-5xl bg-dark-slate rounded-3xl p-4xl text-center relative overflow-hidden text-white">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md mb-md">The Next Draw is Calling</h2>
+<p class="font-body-lg text-body-lg text-subtle-gray mb-3xl max-w-xl mx-auto">Entries for the April "Green Horizon" Draw are now open. Boost your ImpactScore today to increase your winning weight.</p>
+<div class="flex flex-wrap justify-center gap-xl">
+<div class="bg-white/10 backdrop-blur-md px-2xl py-xl rounded-xl border border-white/20">
+<p class="font-label-sm text-win-gold uppercase mb-xs">Estimated Jackpot</p>
+<p class="font-headline-sm text-headline-sm">$50,000+</p>
+</div>
+<div class="bg-white/10 backdrop-blur-md px-2xl py-xl rounded-xl border border-white/20">
+<p class="font-label-sm text-impact-green-light uppercase mb-xs">Days Remaining</p>
+<p class="font-headline-sm text-headline-sm">22:04:18</p>
+</div>
+</div>
+<div class="mt-3xl flex justify-center gap-lg">
+<button class="bg-primary hover:bg-hero-blue-dark text-white px-3xl py-md rounded-lg font-bold transition-all hover:scale-[1.02] shadow-lg">Increase My Score</button>
+<button class="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-3xl py-md rounded-lg font-bold transition-all">View Charities</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-dark-slate py-3xl px-xl w-full mt-5xl">
+<div class="flex flex-col items-center gap-xl max-w-7xl mx-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-surface-container-lowest">ImpactScore</div>
+<div class="flex flex-wrap justify-center gap-xl">
+<a class="font-body-sm text-subtle-gray hover:text-white transition-colors" href="#">Ready to make an impact?</a>
+<a class="font-body-sm text-subtle-gray hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-subtle-gray hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-subtle-gray hover:text-white transition-colors" href="#">Contact Us</a>
+</div>
+<p class="font-body-sm text-subtle-gray">© 2024 ImpactScore. All rights reserved.</p>
+</div>
+</footer>
+<!-- FAB Suppression: Contextually suppressed as per mandate for Draw details page -->
+<script>
+        // Micro-interactions for draw balls
+        document.querySelectorAll('.draw-ball').forEach((ball, index) => {
+            ball.style.animation = `fadeInUp 0.5s ease-out forwards ${index * 0.15}s`;
+            ball.style.opacity = '0';
+        });
+
+        // Simple Countdown logic mockup
+        const countdown = document.querySelector('p.font-headline-sm:last-child');
+        let seconds = 22 * 3600 + 4 * 60 + 18;
+        setInterval(() => {
+            seconds--;
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = seconds % 60;
+            if (countdown && countdown.innerText.includes(':')) {
+                // Not actually updating the DOM to avoid bloat, but structure is here
+            }
+        }, 1000);
+    </script>
+<style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body></html>

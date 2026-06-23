@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Successful | Impact Momentum</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#d8e3fb",
+                        "surface-dim": "#cfdaf2",
+                        "impact-green-dark": "#059669",
+                        "on-primary-fixed": "#001849",
+                        "hero-blue-light": "#E6F0FF",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006c49",
+                        "on-tertiary-fixed": "#341100",
+                        "on-background": "#111c2d",
+                        "hero-blue-dark": "#003BB3",
+                        "on-secondary-fixed": "#002113",
+                        "on-surface": "#111c2d",
+                        "on-secondary-container": "#00714d",
+                        "secondary-container": "#6cf8bb",
+                        "primary-fixed": "#dae1ff",
+                        "win-gold-light": "#FFFBEB",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fff6f3",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "tertiary": "#954000",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "dark-slate": "#1E293B",
+                        "charcoal": "#475569",
+                        "inverse-primary": "#b3c5ff",
+                        "alert-red": "#EF4444",
+                        "impact-green-light": "#DCFCE7",
+                        "on-secondary-fixed-variant": "#005236",
+                        "momentum-orange-light": "#FFEDD5",
+                        "surface-container-highest": "#d8e3fb",
+                        "win-gold": "#FBBF24",
+                        "subtle-gray": "#94A3B8",
+                        "surface-container": "#e7eeff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0054d6",
+                        "outline-variant": "#c2c6d8",
+                        "light-mist": "#F8FAFC",
+                        "error": "#ba1a1a",
+                        "off-white": "#FAFBFF",
+                        "tertiary-container": "#bc5200",
+                        "win-gold-muted": "#FCD34D",
+                        "background": "#f9f9ff",
+                        "primary": "#0050cb",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-surface-variant": "#424656",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "primary-container": "#0066ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "momentum-orange-dark": "#C2410C",
+                        "inverse-surface": "#263143",
+                        "on-primary-container": "#f8f7ff",
+                        "surface-container-high": "#dee8ff",
+                        "outline": "#727687",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-bright": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "3xl": "48px",
+                        "sm": "8px",
+                        "2xl": "32px",
+                        "margin": "24px",
+                        "lg": "16px",
+                        "xl": "24px",
+                        "gutter": "24px",
+                        "5xl": "96px",
+                        "md": "12px",
+                        "4xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .celebration-ping {
+            animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes ping-slow {
+            75%, 100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .check-draw {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: draw 1s ease-out forwards 0.5s;
+        }
+
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<canvas class="confetti-container" id="confetti-canvas"></canvas>
+<header class="bg-light-mist dark:bg-dark-slate flex justify-between items-center w-full px-margin py-sm z-10">
+<div class="font-headline-md text-headline-md font-bold text-hero-blue-dark dark:text-hero-blue-light">
+            Impact Momentum
+        </div>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer hover:text-hero-blue-dark transition-colors">notifications</span>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer hover:text-hero-blue-dark transition-colors">account_circle</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-margin py-5xl relative z-10">
+<div class="max-w-4xl w-full flex flex-col items-center text-center">
+<section class="mb-4xl flex flex-col items-center">
+<div class="relative w-32 h-32 mb-xl">
+<div class="absolute inset-0 bg-hero-blue-light rounded-full celebration-ping opacity-75"></div>
+<div class="relative w-full h-full bg-primary-container rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-105 duration-300">
+<svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path class="check-draw" d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-lg text-on-background tracking-tight">
+                    You're in! Welcome to the ImpactScore Community.
+                </h1>
+<p class="font-body-lg text-body-lg text-charcoal max-w-2xl mx-auto">
+                    Your subscription is now active. You're officially part of a movement that turns golf performance into real-world change.
+                </p>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full mb-3xl">
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-md border-l-4 border-impact-green-dark flex flex-col justify-between items-start text-left transition-all hover:translate-y-[-4px] hover:shadow-lg">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-impact-green-dark" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+<h3 class="font-title-md text-title-md text-on-surface">Choose Your Impact</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">
+                            Direct your momentum. Select the verified charity your performance will support this quarter.
+                        </p>
+</div>
+<button class="bg-primary hover:bg-hero-blue-dark text-on-primary px-xl py-md rounded-lg font-label-sm text-label-sm transition-all transform hover:scale-102 flex items-center gap-sm">
+                        Select Charity
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-md border-l-4 border-primary-container flex flex-col justify-between items-start text-left transition-all hover:translate-y-[-4px] hover:shadow-lg">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">sports_score</span>
+<h3 class="font-title-md text-title-md text-on-surface">Record Your First Score</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">
+                            Enter your latest handicap or round data to establish your baseline and qualify for the upcoming draw.
+                        </p>
+</div>
+<button class="bg-transparent border-2 border-primary text-primary hover:bg-hero-blue-light px-xl py-md rounded-lg font-label-sm text-label-sm transition-all transform hover:scale-102 flex items-center gap-sm">
+                        Entry Score
+                        <span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+<footer class="flex flex-col items-center space-y-md">
+<div class="flex items-center gap-xs text-subtle-gray">
+<span class="material-symbols-outlined text-body-sm">mail</span>
+<p class="font-body-sm text-body-sm italic">A confirmation email has been sent to your inbox.</p>
+</div>
+<a class="text-primary font-title-md text-title-md hover:underline transition-all flex items-center gap-xs group" href="#">
+                    Go to Dashboard
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">chevron_right</span>
+</a>
+</footer>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-white dark:bg-inverse-surface shadow-md rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center bg-hero-blue-light dark:bg-primary-container text-hero-blue-dark dark:text-on-primary-container rounded-xl px-4 py-2 transition-all scale-98">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-subtle-gray dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">volunteer_activism</span>
+<span class="font-label-sm text-label-sm">Impact</span>
+</div>
+<div class="flex flex-col items-center justify-center text-subtle-gray dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">sports_score</span>
+<span class="font-label-sm text-label-sm">Scores</span>
+</div>
+<div class="flex flex-col items-center justify-center text-subtle-gray dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 8 + 4;
+                this.color = ['#0066FF', '#10B981', '#FBBF24', '#FFFFFF'][Math.floor(Math.random() * 4)];
+                this.speedY = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 5 - 2.5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+</body></html>

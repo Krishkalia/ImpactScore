@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const subscription_controller_1 = require("../controllers/subscription.controller");
+const auth_1 = require("../middleware/auth");
+const router = (0, express_1.Router)();
+router.get('/me', auth_1.requireAuth, subscription_controller_1.getMySubscription);
+router.post('/checkout', auth_1.requireAuth, subscription_controller_1.createCheckoutSession);
+router.get('/verify-session', auth_1.requireAuth, subscription_controller_1.verifySession);
+exports.default = router;

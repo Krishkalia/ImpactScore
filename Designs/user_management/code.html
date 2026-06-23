@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management | ImpactScore Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        [data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+        .transition-all-200 {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#954000",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100",
+                        "win-gold-light": "#FFFBEB",
+                        "surface": "#f9f9ff",
+                        "momentum-orange-light": "#FFEDD5",
+                        "on-surface-variant": "#424656",
+                        "on-primary-fixed": "#001849",
+                        "inverse-on-surface": "#ecf1ff",
+                        "tertiary-container": "#bc5200",
+                        "surface-container": "#e7eeff",
+                        "surface-bright": "#f9f9ff",
+                        "inverse-surface": "#263143",
+                        "hero-blue-light": "#E6F0FF",
+                        "on-secondary-fixed": "#002113",
+                        "secondary-fixed-dim": "#4edea3",
+                        "light-mist": "#F8FAFC",
+                        "secondary-container": "#6cf8bb",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-background": "#111c2d",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "tertiary-fixed": "#ffdbca",
+                        "surface-container-high": "#dee8ff",
+                        "surface-dim": "#cfdaf2",
+                        "primary-fixed": "#dae1ff",
+                        "on-error-container": "#93000a",
+                        "primary": "#0050cb",
+                        "on-primary": "#ffffff",
+                        "win-gold-muted": "#FCD34D",
+                        "outline-variant": "#c2c6d8",
+                        "subtle-gray": "#94A3B8",
+                        "surface-variant": "#d8e3fb",
+                        "on-secondary": "#ffffff",
+                        "charcoal": "#475569",
+                        "momentum-orange-dark": "#C2410C",
+                        "impact-green-light": "#DCFCE7",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fff6f3",
+                        "surface-tint": "#0054d6",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#00714d",
+                        "impact-green-dark": "#059669",
+                        "background": "#f9f9ff",
+                        "inverse-primary": "#b3c5ff",
+                        "outline": "#727687",
+                        "dark-slate": "#1E293B",
+                        "win-gold": "#FBBF24",
+                        "hero-blue-dark": "#003BB3",
+                        "on-surface": "#111c2d",
+                        "off-white": "#FAFBFF",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "secondary": "#006c49",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "on-primary-container": "#f8f7ff",
+                        "alert-red": "#EF4444",
+                        "surface-container-low": "#f0f3ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0066ff",
+                        "secondary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "32px",
+                        "md": "12px",
+                        "4xl": "64px",
+                        "sm": "8px",
+                        "3xl": "48px",
+                        "lg": "16px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "5xl": "96px",
+                        "margin": "24px",
+                        "xl": "24px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "mono": ["Monaco"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                        "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display": ["56px", {"lineHeight": "64px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                        "mono": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background overflow-hidden h-screen flex">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-dark-slate dark:bg-on-background shadow-md flex flex-col py-xl z-50">
+<div class="px-lg mb-4xl">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">ImpactScore</h1>
+<p class="font-label-sm text-label-sm text-subtle-gray opacity-80">Admin Console</p>
+</div>
+<nav class="flex-1 space-y-sm px-md overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md bg-primary text-on-primary rounded-lg mx-md scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">volunteer_activism</span>
+<span class="font-label-sm text-label-sm">Charity Partners</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Impact Metrics</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label-sm text-label-sm">Prizes</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-md space-y-sm pt-xl border-t border-charcoal/30">
+<button class="w-full bg-primary-container text-on-primary-container font-label-sm text-label-sm py-md rounded-lg flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Campaign
+            </button>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md transition-colors duration-200 hover:bg-charcoal rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-64 flex flex-col overflow-hidden h-full">
+<!-- TopNavBar Anchor -->
+<header class="h-16 w-full bg-surface-container-lowest shadow-sm flex justify-between items-center px-gutter z-40">
+<div class="flex items-center gap-xl">
+<h2 class="font-title-md text-title-md font-bold text-hero-blue-dark">ImpactScore Admin</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-subtle-gray">search</span>
+<input class="w-full bg-light-mist border-none rounded-full py-sm pl-4xl pr-xl font-body-sm text-body-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search users by email or ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="p-sm text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-alert-red rounded-full"></span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="flex items-center gap-sm pl-md border-l border-outline-variant">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Close up professional portrait of a tech-savvy female administrator in a brightly lit, modern office environment. She is smiling confidently, wearing professional attire. The lighting is soft and even, highlighting a clean, high-utility SaaS platform aesthetic with a focus on trust and growth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvOSu-6UeZSyTPKxOQGi_w8lDjZs0L90w9vMshXJJs9xmErCLw3slENR-TBdexsQ2y-7eVlCOzMh2-aARReHmrRJ2SKh3lHr38vNvbVY3PJKQBpzH6FqgiGQUUFKRXXcfWIOt0Vk7VDIyVoZetqKLkvhhOwF-8z_tCxpM3fCNw4UcAdB-0twXHcG1AMrMRLzQPpJ4a5mISs5Dbwugo3A4K6tlwucy6brOhgbQ_yT0_UdJZFXI_eUYyg6jakaB4yPgiG25p5H8HPbk"/>
+<span class="font-label-sm text-label-sm font-semibold text-dark-slate">Sarah Chen</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-gutter custom-scrollbar">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-3xl">
+<div>
+<h1 class="font-headline-sm text-headline-sm text-dark-slate">User Management</h1>
+<p class="font-body-md text-body-md text-subtle-gray">Manage your community members, subscriptions, and platform activity.</p>
+</div>
+<div class="flex gap-md">
+<button class="bg-hero-blue-light text-primary font-label-sm text-label-sm px-xl py-md rounded-lg flex items-center gap-sm border border-primary/10 hover:bg-primary/10 transition-all-200">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+                        Export CSV
+                    </button>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-xl py-md rounded-lg flex items-center gap-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all-200">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                        Invite User
+                    </button>
+</div>
+</div>
+<!-- Dashboard Filters / Bento Summary -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xl mb-3xl">
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-primary">
+<p class="font-label-sm text-label-sm text-subtle-gray mb-xs uppercase tracking-wider">Total Users</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">12,842</h3>
+<div class="flex items-center gap-xs mt-sm text-impact-green-dark">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm">+4.2% this month</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-impact-green-dark">
+<p class="font-label-sm text-label-sm text-subtle-gray mb-xs uppercase tracking-wider">Active Monthly</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">8,105</h3>
+<p class="font-label-sm text-label-sm text-subtle-gray mt-sm">63% Retention rate</p>
+</div>
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-win-gold">
+<p class="font-label-sm text-label-sm text-subtle-gray mb-xs uppercase tracking-wider">Premium Members</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">2,419</h3>
+<p class="font-label-sm text-label-sm text-subtle-gray mt-sm">Annual subscriptions</p>
+</div>
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-alert-red">
+<p class="font-label-sm text-label-sm text-subtle-gray mb-xs uppercase tracking-wider">Churn Risk</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">142</h3>
+<p class="font-label-sm text-label-sm text-subtle-gray mt-sm">Pending cancellation</p>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Filters -->
+<div class="p-lg border-b border-light-mist flex flex-wrap gap-lg items-center justify-between">
+<div class="flex gap-md">
+<select class="bg-light-mist border-none rounded-lg font-label-sm text-label-sm px-xl py-sm focus:ring-primary focus:ring-2 transition-all">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Lapsed</option>
+<option>Cancelled</option>
+</select>
+<select class="bg-light-mist border-none rounded-lg font-label-sm text-label-sm px-xl py-sm focus:ring-primary focus:ring-2 transition-all">
+<option>Subscription Type</option>
+<option>Monthly</option>
+<option>Yearly</option>
+<option>Free</option>
+</select>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-subtle-gray">Showing 1-10 of 12,842</span>
+</div>
+</div>
+<!-- Main Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-light-mist/50">
+<th class="px-xl py-lg font-label-sm text-label-sm text-subtle-gray uppercase tracking-widest">User Details</th>
+<th class="px-xl py-lg font-label-sm text-label-sm text-subtle-gray uppercase tracking-widest">Status</th>
+<th class="px-xl py-lg font-label-sm text-label-sm text-subtle-gray uppercase tracking-widest">Subscription</th>
+<th class="px-xl py-lg font-label-sm text-label-sm text-subtle-gray uppercase tracking-widest text-center">Scores</th>
+<th class="px-xl py-lg font-label-sm text-label-sm text-subtle-gray uppercase tracking-widest">Last Activity</th>
+<th class="px-xl py-lg font-label-sm text-label-sm text-subtle-gray uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-light-mist">
+<!-- Row 1 -->
+<tr class="hover:bg-light-mist/30 transition-colors duration-150">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-hero-blue-light flex items-center justify-center text-primary font-bold">JD</div>
+<div>
+<p class="font-title-md text-[16px] text-dark-slate">Jameson Dunhill</p>
+<p class="font-body-sm text-body-sm text-subtle-gray">jameson.d@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="bg-impact-green-light text-impact-green-dark font-label-sm text-label-sm px-md py-xs rounded-full inline-flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-impact-green-dark"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-xl py-lg">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-dark-slate">Annual Pro</span>
+<span class="font-label-sm text-[10px] text-subtle-gray uppercase">$120/year</span>
+</div>
+</td>
+<td class="px-xl py-lg text-center">
+<span class="font-body-md text-body-md font-semibold text-dark-slate">48</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">2 hours ago</span>
+</td>
+<td class="px-xl py-lg text-right">
+<div class="relative inline-block text-left group">
+<button class="p-sm text-subtle-gray hover:text-dark-slate hover:bg-surface-variant rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<!-- Actions Dropdown Mockup (Visible on Hover/Focus) -->
+<div class="absolute right-0 mt-2 w-48 bg-white border border-outline-variant rounded-lg shadow-high z-50 invisible group-hover:visible group-focus-within:visible opacity-0 group-hover:opacity-100 transition-all transform origin-top-right scale-95 group-hover:scale-100">
+<div class="py-sm">
+<button class="w-full text-left px-lg py-md font-label-sm text-label-sm text-dark-slate hover:bg-light-mist flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">edit</span> Edit Details
+                                                </button>
+<button class="w-full text-left px-lg py-md font-label-sm text-label-sm text-dark-slate hover:bg-light-mist flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span> Reset Password
+                                                </button>
+<div class="h-px bg-light-mist my-xs"></div>
+<button class="w-full text-left px-lg py-md font-label-sm text-label-sm text-alert-red hover:bg-error-container/20 flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">delete</span> Delete Account
+                                                </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-light-mist/30 transition-colors duration-150">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-momentum-orange-light flex items-center justify-center text-momentum-orange-dark font-bold">MK</div>
+<div>
+<p class="font-title-md text-[16px] text-dark-slate">Mila Kovic</p>
+<p class="font-body-sm text-body-sm text-subtle-gray">m.kovic@impact.io</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-md py-xs rounded-full inline-flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+                                        Lapsed
+                                    </span>
+</td>
+<td class="px-xl py-lg">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-dark-slate">Monthly Basic</span>
+<span class="font-label-sm text-[10px] text-subtle-gray uppercase">$12/month</span>
+</div>
+</td>
+<td class="px-xl py-lg text-center">
+<span class="font-body-md text-body-md font-semibold text-dark-slate">12</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">3 days ago</span>
+</td>
+<td class="px-xl py-lg text-right">
+<button class="p-sm text-subtle-gray hover:text-dark-slate hover:bg-surface-variant rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-light-mist/30 transition-colors duration-150">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-alert-red font-bold">RS</div>
+<div>
+<p class="font-title-md text-[16px] text-dark-slate">Robert Sterling</p>
+<p class="font-body-sm text-body-sm text-subtle-gray">sterling.rob@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="bg-error-container text-alert-red font-label-sm text-label-sm px-md py-xs rounded-full inline-flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-alert-red"></span>
+                                        Cancelled
+                                    </span>
+</td>
+<td class="px-xl py-lg">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-dark-slate">Free Tier</span>
+<span class="font-label-sm text-[10px] text-subtle-gray uppercase">No active billing</span>
+</div>
+</td>
+<td class="px-xl py-lg text-center">
+<span class="font-body-md text-body-md font-semibold text-dark-slate">0</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">2 months ago</span>
+</td>
+<td class="px-xl py-lg text-right">
+<button class="p-sm text-subtle-gray hover:text-dark-slate hover:bg-surface-variant rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-light-mist/30 transition-colors duration-150">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-win-gold-light flex items-center justify-center text-win-gold font-bold">AT</div>
+<div>
+<p class="font-title-md text-[16px] text-dark-slate">Aris Thorne</p>
+<p class="font-body-sm text-body-sm text-subtle-gray">aris.thorne@outlook.com</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="bg-impact-green-light text-impact-green-dark font-label-sm text-label-sm px-md py-xs rounded-full inline-flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-impact-green-dark"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-xl py-lg">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-dark-slate">Monthly Pro</span>
+<span class="font-label-sm text-[10px] text-subtle-gray uppercase">$15/month</span>
+</div>
+</td>
+<td class="px-xl py-lg text-center">
+<span class="font-body-md text-body-md font-semibold text-dark-slate">156</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">Just now</span>
+</td>
+<td class="px-xl py-lg text-right">
+<button class="p-sm text-subtle-gray hover:text-dark-slate hover:bg-surface-variant rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-light-mist/30 transition-colors duration-150">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-hero-blue-light flex items-center justify-center text-primary font-bold">LW</div>
+<div>
+<p class="font-title-md text-[16px] text-dark-slate">Linda Wright</p>
+<p class="font-body-sm text-body-sm text-subtle-gray">linda.w@nonprofit.org</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="bg-impact-green-light text-impact-green-dark font-label-sm text-label-sm px-md py-xs rounded-full inline-flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-impact-green-dark"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-xl py-lg">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-dark-slate">Enterprise Partner</span>
+<span class="font-label-sm text-[10px] text-subtle-gray uppercase">Custom Plan</span>
+</div>
+</td>
+<td class="px-xl py-lg text-center">
+<span class="font-body-md text-body-md font-semibold text-dark-slate">824</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">45 mins ago</span>
+</td>
+<td class="px-xl py-lg text-right">
+<button class="p-sm text-subtle-gray hover:text-dark-slate hover:bg-surface-variant rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination -->
+<div class="p-lg bg-light-mist/20 border-t border-light-mist flex items-center justify-between">
+<button class="flex items-center gap-xs font-label-sm text-label-sm text-subtle-gray hover:text-primary transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                        Previous
+                    </button>
+<div class="flex items-center gap-sm">
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm shadow-sm">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-variant font-label-sm text-label-sm transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-variant font-label-sm text-label-sm transition-colors">3</button>
+<span class="text-subtle-gray">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-variant font-label-sm text-label-sm transition-colors">128</button>
+</div>
+<button class="flex items-center gap-xs font-label-sm text-label-sm text-subtle-gray hover:text-primary transition-colors">
+                        Next
+                        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Contextual Help / Tips Section -->
+<div class="mt-4xl grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="bg-hero-blue-light/50 p-xl rounded-xl border border-primary/10 flex gap-lg">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-on-primary flex-shrink-0">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="font-title-md text-[18px] text-dark-slate mb-xs">Pro Admin Tip</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Use the "Lapsed" filter to identify users whose subscriptions are about to expire. Targeting these users with a momentum-based re-engagement campaign can improve retention by 15%.</p>
+</div>
+</div>
+<div class="bg-win-gold-light/50 p-xl rounded-xl border border-win-gold/10 flex gap-lg">
+<div class="w-12 h-12 bg-win-gold rounded-xl flex items-center justify-center text-on-tertiary-fixed flex-shrink-0">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<h4 class="font-title-md text-[18px] text-dark-slate mb-xs">Security Protocols</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Administrative actions like password resets and account deletions are logged in the global audit trail. Ensure you verify user identity through support tickets before performing destructive actions.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Simple search interaction mockup
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const email = row.querySelector('.text-subtle-gray').textContent.toLowerCase();
+                const name = row.querySelector('.text-dark-slate').textContent.toLowerCase();
+                
+                if (email.includes(term) || name.includes(term)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Dropdown toggle logic enhancement (optional for interactivity)
+        document.addEventListener('click', (e) => {
+            const moreButtons = document.querySelectorAll('.group');
+            moreButtons.forEach(btn => {
+                if (!btn.contains(e.target)) {
+                    // This is handled by CSS hover/focus in this demo, but script would go here for click-to-open
+                }
+            });
+        });
+    </script>
+</body></html>

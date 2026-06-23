@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactScore - Support a Cause</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e7eeff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "primary-container": "#0066ff",
+                        "alert-red": "#EF4444",
+                        "momentum-orange-light": "#FFEDD5",
+                        "hero-blue-dark": "#003BB3",
+                        "tertiary-container": "#bc5200",
+                        "charcoal": "#475569",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "hero-blue-light": "#E6F0FF",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "on-error": "#ffffff",
+                        "momentum-orange-dark": "#C2410C",
+                        "outline": "#727687",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "impact-green-dark": "#059669",
+                        "error": "#ba1a1a",
+                        "on-background": "#111c2d",
+                        "secondary": "#006c49",
+                        "on-error-container": "#93000a",
+                        "win-gold-muted": "#FCD34D",
+                        "on-primary-fixed": "#001849",
+                        "inverse-primary": "#b3c5ff",
+                        "on-secondary-fixed": "#002113",
+                        "dark-slate": "#1E293B",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-highest": "#d8e3fb",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "subtle-gray": "#94A3B8",
+                        "on-primary-container": "#f8f7ff",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "outline-variant": "#c2c6d8",
+                        "off-white": "#FAFBFF",
+                        "surface-dim": "#cfdaf2",
+                        "primary-fixed": "#dae1ff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#0054d6",
+                        "win-gold": "#FBBF24",
+                        "on-surface-variant": "#424656",
+                        "surface-variant": "#d8e3fb",
+                        "light-mist": "#F8FAFC",
+                        "background": "#f9f9ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-surface": "#111c2d",
+                        "inverse-surface": "#263143",
+                        "surface-container-high": "#dee8ff",
+                        "on-tertiary-fixed": "#341100",
+                        "tertiary": "#954000",
+                        "on-tertiary": "#ffffff",
+                        "impact-green-light": "#DCFCE7",
+                        "primary": "#0050cb",
+                        "secondary-container": "#6cf8bb",
+                        "error-container": "#ffdad6",
+                        "win-gold-light": "#FFFBEB",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-container": "#fff6f3",
+                        "on-secondary-container": "#00714d",
+                        "surface-bright": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "5xl": "96px",
+                        "4xl": "64px",
+                        "margin": "24px",
+                        "gutter": "24px",
+                        "xl": "24px",
+                        "2xl": "32px",
+                        "3xl": "48px",
+                        "sm": "8px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "md": "12px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "headline-sm": ["Inter", "sans-serif"],
+                        "title-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border {
+            border-left: 4px solid #0050cb;
+        }
+        .charity-card-hover:hover {
+            border: 2px solid #0066ff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- SideNavBar (Shared Component Anchor) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-off-white dark:bg-dark-slate shadow-md flex flex-col py-xl z-50">
+<div class="px-margin mb-3xl">
+<h1 class="text-title-md font-title-md font-bold text-hero-blue-dark dark:text-hero-blue-light">ImpactScore</h1>
+<p class="text-label-sm font-label-sm text-subtle-gray">Modern Philanthropy</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<!-- Home -->
+<a class="flex items-center px-margin py-md text-charcoal dark:text-subtle-gray hover:bg-hero-blue-light dark:hover:bg-charcoal transition-all" href="#">
+<span class="material-symbols-outlined mr-md" data-icon="home">home</span>
+<span class="font-body-md">Home</span>
+</a>
+<!-- Explore/Charities (Active) -->
+<a class="flex items-center px-margin py-md text-primary dark:text-primary-fixed font-bold border-l-4 border-primary bg-hero-blue-light/30 transition-all" href="#">
+<span class="material-symbols-outlined mr-md" data-icon="explore">explore</span>
+<span class="font-body-md">Explore</span>
+</a>
+<!-- Impact -->
+<a class="flex items-center px-margin py-md text-charcoal dark:text-subtle-gray hover:bg-hero-blue-light dark:hover:bg-charcoal transition-all" href="#">
+<span class="material-symbols-outlined mr-md" data-icon="favorite">favorite</span>
+<span class="font-body-md">Impact</span>
+</a>
+<!-- Wallet -->
+<a class="flex items-center px-margin py-md text-charcoal dark:text-subtle-gray hover:bg-hero-blue-light dark:hover:bg-charcoal transition-all" href="#">
+<span class="material-symbols-outlined mr-md" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md">Wallet</span>
+</a>
+</nav>
+<div class="px-margin mt-auto pt-xl border-t border-light-mist">
+<button class="w-full bg-primary text-on-primary py-md rounded-lg font-label-sm hover:bg-hero-blue-dark transform hover:scale-102 transition-all shadow-sm mb-xl">
+                Support a Cause
+            </button>
+<div class="space-y-sm">
+<a class="flex items-center text-subtle-gray hover:text-primary text-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined mr-sm text-[20px]" data-icon="settings">settings</span> Settings
+                </a>
+<a class="flex items-center text-subtle-gray hover:text-primary text-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined mr-sm text-[20px]" data-icon="help">help</span> Help
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen p-3xl bg-background">
+<!-- Header Section -->
+<header class="max-w-7xl mx-auto mb-4xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Support a Cause You Believe In</h2>
+<p class="font-body-lg text-body-lg text-charcoal max-w-2xl">Your subscription helps charities make an impact. Select the organization you want to champion this month.</p>
+</header>
+<!-- Search & Filter Bar -->
+<section class="max-w-7xl mx-auto mb-4xl">
+<div class="flex flex-col md:flex-row gap-lg items-center">
+<div class="relative w-full md:w-96 group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-subtle-gray group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full pl-10 pr-md py-md bg-off-white border-subtle-gray/30 border-2 rounded-lg focus:ring-0 focus:border-primary transition-all text-body-md" placeholder="Search charities by name..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-sm">
+<button class="px-lg py-sm rounded-full bg-primary text-on-primary font-label-sm">All</button>
+<button class="px-lg py-sm rounded-full bg-off-white text-charcoal border border-subtle-gray/20 hover:border-primary font-label-sm transition-colors">Environment</button>
+<button class="px-lg py-sm rounded-full bg-off-white text-charcoal border border-subtle-gray/20 hover:border-primary font-label-sm transition-colors">Health</button>
+<button class="px-lg py-sm rounded-full bg-off-white text-charcoal border border-subtle-gray/20 hover:border-primary font-label-sm transition-colors">Education</button>
+<button class="px-lg py-sm rounded-full bg-off-white text-charcoal border border-subtle-gray/20 hover:border-primary font-label-sm transition-colors">Animal Welfare</button>
+</div>
+</div>
+</section>
+<!-- Featured Charity Spotlight -->
+<section class="max-w-7xl mx-auto mb-5xl">
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col lg:flex-row border border-light-mist">
+<div class="lg:w-3/5 h-96 lg:h-auto relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A lush, vibrant reforestation project in a tropical valley with golden morning light filtering through broad leaves. In the foreground, local community members are carefully planting saplings into the rich dark soil. The atmosphere is hopeful, sun-drenched, and captures a professional, high-end photography style with soft focus backgrounds and sharp botanical details." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDInHKfh9K38AY-ouupnKZ3K84k1FeA-CIuKjLy7mc6DHzyu1Yp-xRsuK4f73Vzdp9LfUTIAoSQ429xa5g4rs9Pww5-ZHMlGy5bZZ4g-C3umYT9kvQ_yLgit3Bx9yDT9IzSbg5gVsJ2X1NQIdeDSyvh1kszeTCM-rWcvQPQDmQ7Le-EGhrL7sfPh_4IRLapiNjBLLrZtjzsIuT4nHPE-LlCRJsSrvjsHkrCoJirvOyclLri7UmoZdpz4qaC3ElmZz8LaYLJq3i4CAI')"></div>
+<div class="absolute top-lg left-lg">
+<span class="bg-win-gold text-on-tertiary-fixed font-bold px-lg py-xs rounded-full text-label-sm flex items-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] mr-xs" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                            FEATURED
+                        </span>
+</div>
+</div>
+<div class="lg:w-2/5 p-3xl flex flex-col justify-center">
+<h3 class="font-headline-sm text-headline-sm text-hero-blue-dark mb-lg">The Canopy Collective</h3>
+<div class="space-y-md mb-xl">
+<p class="text-charcoal font-body-md leading-relaxed">
+                            Every tree planted creates a legacy of cleaner air and restored biodiversity. We partner with local communities in the Amazon basin to restore ancestral lands while creating sustainable jobs.
+                        </p>
+<p class="text-charcoal font-body-md leading-relaxed">
+                            Through your monthly subscription, we aim to plant over 10,000 native species this quarter, directly offsetting carbon emissions and protecting endangered local wildlife.
+                        </p>
+</div>
+<div class="flex gap-xl mb-xl">
+<div class="text-center">
+<span class="block font-bold text-impact-green-dark text-title-md">500+</span>
+<span class="text-label-sm text-subtle-gray">Supporters</span>
+</div>
+<div class="text-center">
+<span class="block font-bold text-impact-green-dark text-title-md">$25K+</span>
+<span class="text-label-sm text-subtle-gray">Raised</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary py-lg rounded-lg font-title-md font-bold hover:bg-hero-blue-dark transform hover:scale-102 transition-all shadow-md">
+                        Select This Charity
+                    </button>
+</div>
+</div>
+</section>
+<!-- Charity Grid -->
+<section class="max-w-7xl mx-auto">
+<h3 class="font-title-md text-title-md text-on-surface mb-xl border-l-4 border-momentum-orange-dark pl-md">Browse More Causes</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Card 1 -->
+<div class="bg-impact-green-light/40 border-2 border-transparent rounded-xl p-2xl charity-card-hover transition-all flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest border border-impact-green-dark/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist logo for a clean water charity featuring a stylized blue water droplet merging with a green leaf. Professional corporate graphic design with clean lines and balanced proportions on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeAkxMbv_eijeF-wgbDgAptIo5n39fHEqhayC8INRDLmMxcDXmLLJ2ZJNo7vj1tvqJO9zfgs-U-ZZgEPxBRUgk0phFmgeAO8BA81zbM6uC1Q_WMs5c44_YE3vsKlGYDgu4RHfFotXbLEVKpM5qgg05R2eIloj2r0rIrYmhTi7sFHykuWsoQTvfdbTZODE6tEeeL10cott1uEikAMigE-HMUVlamMbNjUd85SZlxpQbKy5IHH0oNQxqJm48shcjIo7maLY1EVUbQ1k"/>
+</div>
+<span class="bg-impact-green-light text-impact-green-dark px-sm py-xs rounded-full text-[10px] font-bold tracking-wider">HEALTH</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-sm">BlueDrop Initiative</h4>
+<p class="text-charcoal text-body-sm mb-lg line-clamp-3">Providing sustainable water filtration systems to rural schools across South East Asia, ensuring children stay in school and healthy.</p>
+<div class="mt-auto pt-lg border-t border-impact-green-dark/10 flex justify-between items-center">
+<div>
+<span class="block font-bold text-on-surface-variant text-body-md">1.2k liters</span>
+<span class="text-label-sm text-subtle-gray">Daily Clean Water</span>
+</div>
+<button class="px-lg py-sm rounded-lg border-2 border-hero-blue text-primary font-label-sm hover:bg-primary hover:text-on-primary transition-all">Select</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-impact-green-light/40 border-2 border-transparent rounded-xl p-2xl charity-card-hover transition-all flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest border border-impact-green-dark/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern educational logo featuring an open book where the pages are shaped like wings. Soft pastel colors and elegant serif typography, representing growth and knowledge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy99qZTR5srgbjej4jRBxrj_q4IGK97T0m6PnPepckhOrngCeh5NSPgJQF1UpT-SkW5sMXb5FWosD4wF3G4jsVRGrFxR-QKbbIvPh3bfyINbsGVnZMlZbmvx6sqG8ZaRyy9Lf1edNcIvIdvjGZ65fnHPILgeevWJAjlXqhz9E_3WeSzsBfc8V8yxNlI4WNB29rvAzYp3MJjCjCy7dRCKw0US4PatJRJ-T6602LJucIAf8xbYkETUbT4j3ixCEdT295R4-g1Frm3tE"/>
+</div>
+<span class="bg-impact-green-light text-impact-green-dark px-sm py-xs rounded-full text-[10px] font-bold tracking-wider">EDUCATION</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-sm">EduFuture Fund</h4>
+<p class="text-charcoal text-body-sm mb-lg line-clamp-3">Bridging the digital divide by providing laptops and high-speed internet access to underserved urban youth centers.</p>
+<div class="mt-auto pt-lg border-t border-impact-green-dark/10 flex justify-between items-center">
+<div>
+<span class="block font-bold text-on-surface-variant text-body-md">45 Centers</span>
+<span class="text-label-sm text-subtle-gray">Active Programs</span>
+</div>
+<button class="px-lg py-sm rounded-lg border-2 border-hero-blue text-primary font-label-sm hover:bg-primary hover:text-on-primary transition-all">Select</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-impact-green-light/40 border-2 border-transparent rounded-xl p-2xl charity-card-hover transition-all flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest border border-impact-green-dark/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A contemporary animal welfare logo featuring the silhouette of a paw print inside a warm orange sun. Friendly, trustworthy, and modern flat vector design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEu8kydBUJXaMl8RfwQ4Hho_QfDxo9V25NdtBaOMWx4YOCvdUFbXTuPTMcp2CcQNuExux40PvV6cLnnSvfkZLASo8b1tyOUiDZHpn8miAnVnsOOtVO3OSVsfpmzFBXlkOK5XHXNT7kcjKWlWCnfzFzugeJ3PA5Lt94bmgkSscz5p2wLd-xdgMkzurdJwuedbRjZL5h95Aw2ve16qCH1RKppdGpWWXdQMFGo5SgWSBT3tpqWhIuo5_Vgbdw5JMYUD-i-rflHCMRUWs"/>
+</div>
+<span class="bg-impact-green-light text-impact-green-dark px-sm py-xs rounded-full text-[10px] font-bold tracking-wider">WILDLIFE</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-sm">Paws &amp; Plains</h4>
+<p class="text-charcoal text-body-sm mb-lg line-clamp-3">Protecting vulnerable wildlife corridors and funding anti-poaching units in conservation hotspots globally.</p>
+<div class="mt-auto pt-lg border-t border-impact-green-dark/10 flex justify-between items-center">
+<div>
+<span class="block font-bold text-on-surface-variant text-body-md">200+ Rangers</span>
+<span class="text-label-sm text-subtle-gray">On Patrol</span>
+</div>
+<button class="px-lg py-sm rounded-lg border-2 border-hero-blue text-primary font-label-sm hover:bg-primary hover:text-on-primary transition-all">Select</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-impact-green-light/40 border-2 border-transparent rounded-xl p-2xl charity-card-hover transition-all flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest border border-impact-green-dark/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A corporate identity logo for an ocean conservation charity. It features abstract blue waves in a circular motion, symbolizing the global ocean current. Clean, high-contrast, professional design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB551ApqC2QmvmA9uvm5tXgNSXlevNRQriPa9dWf5u2-JA2Sa2t2ATrDpDUq-qZAAR7F35llnznSdW0Vvos6vNk0E4tBXxpzzSOM0jS72qduutdec_LFTK4wOtDXJfeaFM7qgoqo9ZYwKxfQtiWDDZ0RIO2RzGb2VpCr-XKXlvinI_D-eD2UPd14vRJFie-EiMNx6nQyewplSGfd3ZIPQH4tOwtzAvK6W6IEZVjyKSWIWw3zvkbUosugrwuI7qT_A5lR7uJYOLtYdw"/>
+</div>
+<span class="bg-impact-green-light text-impact-green-dark px-sm py-xs rounded-full text-[10px] font-bold tracking-wider">ENVIRONMENT</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-sm">Ocean Clear</h4>
+<p class="text-charcoal text-body-sm mb-lg line-clamp-3">Deploying advanced floating barriers to capture ocean plastics at the mouth of major rivers before they reach the sea.</p>
+<div class="mt-auto pt-lg border-t border-impact-green-dark/10 flex justify-between items-center">
+<div>
+<span class="block font-bold text-on-surface-variant text-body-md">15 Tons</span>
+<span class="text-label-sm text-subtle-gray">Plastic Removed</span>
+</div>
+<button class="px-lg py-sm rounded-lg border-2 border-hero-blue text-primary font-label-sm hover:bg-primary hover:text-on-primary transition-all">Select</button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-impact-green-light/40 border-2 border-transparent rounded-xl p-2xl charity-card-hover transition-all flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest border border-impact-green-dark/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A tech-forward charity logo with a stethoscope shaped into a heart, using vibrant primary colors. Suggests innovation and compassionate healthcare delivery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV2w8J9ut9SYAkwPpxbx_vMS70TXuC0HdZYmZYg2yN_fphgGNHWLS27gULFI7-KYonqLXveGXxZfi3IriFQZ9S8yuRK3b34ZfqVLWk0vyvJ8laGK2CavNKK2Mk6cocPGYyQ5PROHzEPas2BaWNDd1-xiAHkjNG7DPTbHuyMx9GJvQMYGP1eayjTj699jMZdYduB1fC_7YSUuhMN6op3DQ36UZOOhch8LEULqcBD35NzwACOy5dQkovdraRo-og_TOQ24mjiRLSfGY"/>
+</div>
+<span class="bg-impact-green-light text-impact-green-dark px-sm py-xs rounded-full text-[10px] font-bold tracking-wider">HEALTH</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-sm">MedConnect Global</h4>
+<p class="text-charcoal text-body-sm mb-lg line-clamp-3">Supporting mobile clinics that deliver essential vaccines and maternal care to isolated highland communities.</p>
+<div class="mt-auto pt-lg border-t border-impact-green-dark/10 flex justify-between items-center">
+<div>
+<span class="block font-bold text-on-surface-variant text-body-md">8k Patients</span>
+<span class="text-label-sm text-subtle-gray">Treated Yearly</span>
+</div>
+<button class="px-lg py-sm rounded-lg border-2 border-hero-blue text-primary font-label-sm hover:bg-primary hover:text-on-primary transition-all">Select</button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-impact-green-light/40 border-2 border-transparent rounded-xl p-2xl charity-card-hover transition-all flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest border border-impact-green-dark/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A logo for a food security NGO showing a wheat stalk held by two hands forming a protective circle. Earthy tones and a trustworthy, professional feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMont7iX3iLVCf7eb2CO6baQDOsogEILWLiGabx-7ijYQACLByUtg2fjZ7TQmtq36eiIGVd4i4hRespJufj4Yk6Hi-Tt04VxHMRONt_iAv9uqRhwMV1ZBFQL_18yDFYtmrBVLLhkV720xyqRqFgpj8xdpDbJrwDvF6RE71snKdsX6AhxGOh08l1qmkV-hKzm7ZhcPs4UN02Sq5ugpDFlFpg8Ng4j4YfplLIK8d71QT865RH5NQs6dp-ygyKR0lXKAnBkThTGY9vOs"/>
+</div>
+<span class="bg-impact-green-light text-impact-green-dark px-sm py-xs rounded-full text-[10px] font-bold tracking-wider">FOOD</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-sm">Harvest Hope</h4>
+<p class="text-charcoal text-body-sm mb-lg line-clamp-3">Optimizing local food supply chains to reduce waste and ensure fresh produce reaches community food banks within 24 hours.</p>
+<div class="mt-auto pt-lg border-t border-impact-green-dark/10 flex justify-between items-center">
+<div>
+<span class="block font-bold text-on-surface-variant text-body-md">1M Meals</span>
+<span class="text-label-sm text-subtle-gray">Delivered Monthly</span>
+</div>
+<button class="px-lg py-sm rounded-lg border-2 border-hero-blue text-primary font-label-sm hover:bg-primary hover:text-on-primary transition-all">Select</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.98)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1.02)';
+            });
+        });
+
+        // Filter button toggle logic (visual only)
+        const filterButtons = document.querySelectorAll('section button.px-lg');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary');
+                    b.classList.add('bg-off-white', 'text-charcoal', 'border', 'border-subtle-gray/20');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary');
+                btn.classList.remove('bg-off-white', 'text-charcoal', 'border', 'border-subtle-gray/20');
+            });
+        });
+    </script>
+</body></html>

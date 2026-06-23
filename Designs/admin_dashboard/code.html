@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactScore Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "win-gold-light": "#FFFBEB",
+                        "surface-container-highest": "#d8e3fb",
+                        "light-mist": "#F8FAFC",
+                        "off-white": "#FAFBFF",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-secondary-container": "#00714d",
+                        "surface": "#f9f9ff",
+                        "surface-container": "#e7eeff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-high": "#dee8ff",
+                        "on-background": "#111c2d",
+                        "surface-dim": "#cfdaf2",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "outline-variant": "#c2c6d8",
+                        "outline": "#727687",
+                        "dark-slate": "#1E293B",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#0066ff",
+                        "surface-variant": "#d8e3fb",
+                        "surface-container-low": "#f0f3ff",
+                        "primary-fixed": "#dae1ff",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "on-primary-fixed": "#001849",
+                        "inverse-primary": "#b3c5ff",
+                        "on-surface": "#111c2d",
+                        "momentum-orange-dark": "#C2410C",
+                        "tertiary-fixed": "#ffdbca",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "momentum-orange-light": "#FFEDD5",
+                        "on-tertiary-container": "#fff6f3",
+                        "secondary-fixed-dim": "#4edea3",
+                        "alert-red": "#EF4444",
+                        "error-container": "#ffdad6",
+                        "hero-blue-light": "#E6F0FF",
+                        "inverse-on-surface": "#ecf1ff",
+                        "tertiary": "#954000",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-tint": "#0054d6",
+                        "secondary-fixed": "#6ffbbe",
+                        "win-gold": "#FBBF24",
+                        "charcoal": "#475569",
+                        "on-secondary-fixed-variant": "#005236",
+                        "tertiary-container": "#bc5200",
+                        "primary": "#0050cb",
+                        "on-tertiary": "#ffffff",
+                        "impact-green-light": "#DCFCE7",
+                        "inverse-surface": "#263143",
+                        "on-surface-variant": "#424656",
+                        "subtle-gray": "#94A3B8",
+                        "win-gold-muted": "#FCD34D",
+                        "hero-blue-dark": "#003BB3",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#f8f7ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "impact-green-dark": "#059669",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#6cf8bb",
+                        "secondary": "#006c49"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "24px",
+                        "sm": "8px",
+                        "md": "12px",
+                        "5xl": "96px",
+                        "3xl": "48px",
+                        "4xl": "64px",
+                        "xs": "4px",
+                        "2xl": "32px",
+                        "gutter": "24px",
+                        "margin": "24px",
+                        "lg": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Fixed SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-dark-slate dark:bg-on-background shadow-md flex flex-col py-xl z-50">
+<div class="px-lg mb-4xl">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">ImpactScore</h1>
+<p class="font-label-sm text-label-sm text-subtle-gray">Admin Console</p>
+</div>
+<nav class="flex-grow space-y-xs">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-md px-lg py-md bg-primary text-on-primary rounded-lg mx-md scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-sm text-label-sm">Users</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="draw">draw</span>
+<span class="font-label-sm text-label-sm">Draws</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="font-label-sm text-label-sm">Charity Partners</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-sm text-label-sm">Winners</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-subtle-gray hover:text-off-white mx-md hover:bg-charcoal transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-lg space-y-xs pt-xl border-t border-charcoal/30">
+<button class="w-full mb-xl py-md bg-primary hover:bg-hero-blue-dark text-on-primary font-label-sm text-label-sm rounded-lg transition-all transform active:scale-95">
+                New Campaign
+            </button>
+<a class="flex items-center gap-md py-md text-subtle-gray hover:text-off-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+<a class="flex items-center gap-md py-md text-subtle-gray hover:text-off-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Viewport -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface-container-lowest dark:bg-surface-dim shadow-sm flex justify-between items-center px-gutter z-40">
+<div class="flex items-center gap-xl w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-light-mist border-none rounded-lg pl-10 pr-4 py-2 font-body-sm text-body-sm focus:ring-2 focus:ring-primary" placeholder="Search analytics, users, or charities..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<button class="relative p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-alert-red rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<div class="text-right">
+<p class="font-label-sm text-label-sm font-bold text-dark-slate">Admin User</p>
+<p class="font-label-sm text-[10px] text-subtle-gray uppercase tracking-wider">Super Administrator</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-surface-container-high object-cover" data-alt="A professional headshot of a corporate administrator, studio lighting, clean white background, minimalist business attire, high resolution photography, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0BJ5YNB4RGiSMG010ji5RiAyToTiazYD-iDX-HSqAFis5Imp1_XFCesOywMccNz00NVN6kYU1WlVuTpaaLBVQnYxpxiuFm913YsJo9_gBikNZvXpKOtecqo9goUqwQxBdPgXXxsWwP4OiwCdg4BzQ2va0fXtoMwO0ShEeozMz0pSZM_XUXpzvrqsHRc2FOYFdyPEK1jPhWOaAhrbTvsdYbWl0XkD1K3McauuPbumgN5tamJL7ZbEq0bFTOLgxe8ynvVODukEKku8"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="pt-16 p-gutter">
+<div class="max-w-[1440px] mx-auto pt-lg">
+<!-- KPI Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-xl mb-3xl">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<span class="p-2 bg-hero-blue-light text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</span>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+                                +12%
+                            </span>
+</div>
+<p class="font-label-sm text-label-sm text-subtle-gray mb-1">Total Users</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">12,482</h3>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-win-gold hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<span class="p-2 bg-win-gold-light text-win-gold-muted rounded-lg">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</span>
+<span class="text-subtle-gray font-label-sm text-label-sm">Active Pool</span>
+</div>
+<p class="font-label-sm text-label-sm text-subtle-gray mb-1">Total Prize Pool</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">$50,000</h3>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-impact-green-dark hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<span class="p-2 bg-impact-green-light text-impact-green-dark rounded-lg">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+</span>
+<span class="text-secondary font-label-sm text-label-sm">Total Raised</span>
+</div>
+<p class="font-label-sm text-label-sm text-subtle-gray mb-1">Charity Contributions</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">$452,100</h3>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm border-l-4 border-momentum-orange-dark hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<span class="p-2 bg-momentum-orange-light text-momentum-orange-dark rounded-lg">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</span>
+<span class="text-alert-red font-label-sm text-label-sm">6 days left</span>
+</div>
+<p class="font-label-sm text-label-sm text-subtle-gray mb-1">Next Draw</p>
+<h3 class="font-headline-sm text-headline-sm text-dark-slate">April 1, 2026</h3>
+</div>
+</section>
+<div class="grid grid-cols-12 gap-xl">
+<!-- Main Analytics Section -->
+<div class="col-span-12 lg:col-span-9 space-y-xl">
+<!-- Charts Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<!-- Growth Chart -->
+<div class="md:col-span-2 bg-surface-container-lowest p-xl rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h4 class="font-title-md text-title-md text-dark-slate">User Growth</h4>
+<p class="font-body-sm text-body-sm text-subtle-gray">Monthly platform adoption rate</p>
+</div>
+<select class="bg-light-mist border-none rounded-lg font-label-sm text-label-sm text-on-surface-variant px-md py-1">
+<option>Last 6 Months</option>
+<option>Last Year</option>
+</select>
+</div>
+<div class="h-64 flex items-end justify-between gap-2 px-md pb-xl">
+<!-- Simulated Graph Bars for a Modern Feel -->
+<div class="w-full bg-hero-blue-light rounded-t-lg h-[40%] hover:bg-primary transition-all group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-slate text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Oct</div>
+</div>
+<div class="w-full bg-hero-blue-light rounded-t-lg h-[55%] hover:bg-primary transition-all group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-slate text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Nov</div>
+</div>
+<div class="w-full bg-hero-blue-light rounded-t-lg h-[48%] hover:bg-primary transition-all group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-slate text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Dec</div>
+</div>
+<div class="w-full bg-hero-blue-light rounded-t-lg h-[75%] hover:bg-primary transition-all group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-slate text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Jan</div>
+</div>
+<div class="w-full bg-hero-blue-light rounded-t-lg h-[82%] hover:bg-primary transition-all group relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-slate text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Feb</div>
+</div>
+<div class="w-full bg-primary rounded-t-lg h-[95%] relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-dark-slate text-on-primary text-[10px] px-2 py-1 rounded">Mar</div>
+</div>
+</div>
+</div>
+<!-- Breakdown Chart -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm flex flex-col">
+<h4 class="font-title-md text-title-md text-dark-slate mb-xl">Subscriptions</h4>
+<div class="flex-grow flex items-center justify-center relative">
+<!-- Donut Chart Visualization -->
+<div class="w-40 h-40 rounded-full border-[16px] border-hero-blue-light border-t-primary border-r-primary flex items-center justify-center">
+<div class="text-center">
+<span class="font-headline-sm text-headline-sm block">72%</span>
+<span class="font-label-sm text-[10px] text-subtle-gray uppercase">Yearly</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm mt-xl">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary rounded-full"></span>
+<span class="font-body-sm text-body-sm">Yearly</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold">8,987</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-hero-blue-light rounded-full"></span>
+<span class="font-body-sm text-body-sm">Monthly</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold">3,495</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-xl border-b border-light-mist flex justify-between items-center">
+<h4 class="font-title-md text-title-md text-dark-slate">Recent Activity</h4>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-light-mist">
+<th class="px-xl py-md font-label-sm text-label-sm text-subtle-gray uppercase">User</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-subtle-gray uppercase">Action</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-subtle-gray uppercase">Status</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-subtle-gray uppercase">Timestamp</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-light-mist">
+<tr class="hover:bg-off-white transition-colors">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-hero-blue-light flex items-center justify-center text-primary font-bold text-[10px]">AR</div>
+<span class="font-body-sm text-body-sm text-dark-slate">alex.r@example.com</span>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm">Submitted Scores</span>
+</td>
+<td class="px-xl py-lg">
+<span class="px-3 py-1 bg-impact-green-light text-impact-green-dark rounded-full font-label-sm text-[10px] font-bold">VERIFIED</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">2 mins ago</span>
+</td>
+</tr>
+<tr class="hover:bg-off-white transition-colors">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-momentum-orange-light flex items-center justify-center text-momentum-orange-dark font-bold text-[10px]">SJ</div>
+<span class="font-body-sm text-body-sm text-dark-slate">sarah.j@example.com</span>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm">Changed Charity</span>
+</td>
+<td class="px-xl py-lg">
+<span class="px-3 py-1 bg-impact-green-light text-impact-green-dark rounded-full font-label-sm text-[10px] font-bold">SUCCESS</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">15 mins ago</span>
+</td>
+</tr>
+<tr class="hover:bg-off-white transition-colors">
+<td class="px-xl py-lg">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-charcoal font-bold text-[10px]">PP</div>
+<span class="font-body-sm text-body-sm text-dark-slate">prize_payout_092</span>
+</div>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm">Winner Verification</span>
+</td>
+<td class="px-xl py-lg">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-[10px] font-bold">PENDING</span>
+</td>
+<td class="px-xl py-lg">
+<span class="font-body-sm text-body-sm text-subtle-gray">1 hour ago</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Sidebar Section -->
+<div class="col-span-12 lg:col-span-3 space-y-xl">
+<!-- Quick Actions -->
+<div class="bg-surface-container-lowest p-xl rounded-xl shadow-sm">
+<h4 class="font-title-md text-title-md text-dark-slate mb-xl">Quick Actions</h4>
+<div class="space-y-md">
+<button class="w-full flex items-center justify-between p-lg bg-light-mist hover:bg-hero-blue-light hover:text-primary rounded-xl transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+<span class="font-label-sm text-label-sm">Run Simulation</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-lg bg-light-mist hover:bg-impact-green-light hover:text-impact-green-dark rounded-xl transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span class="font-label-sm text-label-sm">Manage Charities</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-lg bg-light-mist hover:bg-win-gold-light hover:text-win-gold-muted rounded-xl transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="military_tech">military_tech</span>
+<span class="font-label-sm text-label-sm">Review Winners</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- System Health Card -->
+<div class="bg-dark-slate p-xl rounded-xl shadow-sm text-on-primary relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-xl">
+<h4 class="font-title-md text-title-md">System Health</h4>
+<span class="flex h-3 w-3 rounded-full bg-impact-green-dark animate-pulse"></span>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between items-center text-subtle-gray">
+<span class="font-label-sm text-label-sm">API Latency</span>
+<span class="font-body-sm text-body-sm text-on-primary">124ms</span>
+</div>
+<div class="w-full bg-charcoal h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center text-subtle-gray">
+<span class="font-label-sm text-label-sm">Uptime</span>
+<span class="font-body-sm text-body-sm text-on-primary">99.99%</span>
+</div>
+<div class="w-full bg-charcoal h-1 rounded-full overflow-hidden">
+<div class="bg-impact-green-dark h-full w-[99%]"></div>
+</div>
+</div>
+</div>
+<!-- Subtle Background Texture -->
+<div class="absolute -bottom-8 -right-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="dns">dns</span>
+</div>
+</div>
+<!-- Promotion/Info Card -->
+<div class="relative rounded-xl overflow-hidden aspect-video group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A clean, modern 3D rendering of floating gold coins and digital heart icons against a deep blue background. The aesthetic is high-end fintech, representing global generosity and digital wealth redistribution. Cinematic lighting and soft shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAiefalT-7E_CQEWeY60n5HBAHWACFafRpm5lBk8lr6xHkayh8u_8jyUbyabnuDAG5soO369SYWZxu5VLUYvnq5rEwdoaw-A9l2uGb0jdsU4LHULdJiYJ3UhkkWcWdQO_u5Nhwl-xP84B_T3UsoaUzoB2pK6gez9-dTPfpjh7-Bi2pGrcxzyoVouFcIErNz62YXhYpVmVOkE8DIi9dOzHVE6aEeNtSNq3e1rO-QdfG5fXc5DIRg6HykMx0-aTEipxo3HR4X8zA0ovQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-dark-slate/90 to-transparent flex flex-col justify-end p-xl">
+<p class="font-label-sm text-[10px] text-win-gold uppercase tracking-[2px] mb-1">Impact Spotlight</p>
+<h5 class="font-title-md text-title-md text-on-primary">New Charity Partner: Ocean Clean</h5>
+<p class="font-body-sm text-body-sm text-subtle-gray mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Review their integration documents and campaign schedule.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.98)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

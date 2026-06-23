@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactScore Admin | Winner Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f9f9ff",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-fixed-dim": "#4edea3",
+                    "hero-blue-dark": "#003BB3",
+                    "momentum-orange-dark": "#C2410C",
+                    "inverse-surface": "#263143",
+                    "outline": "#727687",
+                    "win-gold": "#FBBF24",
+                    "tertiary-container": "#bc5200",
+                    "primary": "#0050cb",
+                    "on-tertiary-container": "#fff6f3",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "on-primary-container": "#f8f7ff",
+                    "secondary": "#006c49",
+                    "on-primary-fixed": "#001849",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#341100",
+                    "on-background": "#111c2d",
+                    "on-tertiary-fixed-variant": "#783200",
+                    "surface-container": "#e7eeff",
+                    "inverse-primary": "#b3c5ff",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "impact-green-dark": "#059669",
+                    "primary-fixed": "#dae1ff",
+                    "on-surface-variant": "#424656",
+                    "tertiary-fixed": "#ffdbca",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#0054d6",
+                    "off-white": "#FAFBFF",
+                    "surface-container-low": "#f0f3ff",
+                    "outline-variant": "#c2c6d8",
+                    "on-secondary-fixed-variant": "#005236",
+                    "subtle-gray": "#94A3B8",
+                    "primary-container": "#0066ff",
+                    "charcoal": "#475569",
+                    "on-primary-fixed-variant": "#003fa4",
+                    "hero-blue-light": "#E6F0FF",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "win-gold-light": "#FFFBEB",
+                    "surface-dim": "#cfdaf2",
+                    "on-error": "#ffffff",
+                    "light-mist": "#F8FAFC",
+                    "alert-red": "#EF4444",
+                    "surface-container-high": "#dee8ff",
+                    "background": "#f9f9ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "impact-green-light": "#DCFCE7",
+                    "tertiary": "#954000",
+                    "on-secondary-container": "#00714d",
+                    "surface-bright": "#f9f9ff",
+                    "momentum-orange-light": "#FFEDD5",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#d8e3fb",
+                    "dark-slate": "#1E293B",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-surface": "#111c2d",
+                    "surface-container-lowest": "#ffffff",
+                    "win-gold-muted": "#FCD34D",
+                    "inverse-on-surface": "#ecf1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "12px",
+                    "margin": "24px",
+                    "lg": "16px",
+                    "3xl": "48px",
+                    "xl": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "4xl": "64px",
+                    "2xl": "32px",
+                    "gutter": "24px",
+                    "5xl": "96px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-md": ["Inter"],
+                    "mono": ["Monaco"],
+                    "headline-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "mono": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                    "display": ["56px", {"lineHeight": "64px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #d8e3fb; border-radius: 10px; }
+        .transition-all-200 { transition: all 200ms ease-in-out; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-surface-container-low dark:bg-inverse-surface py-xl gap-sm border-r border-outline-variant/20 shadow-sm z-20">
+<div class="px-xl mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-primary">Impact Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Verification Officer</p>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg mx-sm my-xs group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Overview</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-lg mx-sm my-xs group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-sm text-label-sm">Verification Queue</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg mx-sm my-xs group" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">User Management</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg mx-sm my-xs group" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">Prize Inventory</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg mx-sm my-xs group" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-label-sm">Audit Logs</span>
+</a>
+</nav>
+<div class="px-xl mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-sm text-label-sm py-sm rounded-lg hover:scale-102 transition-transform shadow-sm">
+                Export Reports
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-margin py-sm bg-surface dark:bg-dark-slate shadow-sm z-10 border-b border-outline-variant/10">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-title-md font-bold text-primary dark:text-primary-fixed-dim">ImpactScore</span>
+</div>
+<div class="flex items-center gap-xl flex-1 justify-center max-w-2xl px-xl">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-xl pr-md py-xs font-body-sm text-body-sm focus:ring-2 focus:ring-primary/20" placeholder="Global Search..." type="text"/>
+</div>
+<div class="hidden lg:flex items-center gap-xl">
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1" href="#">Dashboard</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Claims</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Winners</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Prizes</a>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="p-xs hover:bg-surface-container transition-colors rounded-full relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-xs hover:bg-surface-container transition-colors rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+<div class="flex items-center gap-sm pl-md border-l border-outline-variant/30">
+<img class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/10" data-alt="A clean professional headshot of a middle-aged male administrator wearing a dark navy blazer and a light blue dress shirt, looking friendly and authoritative. The lighting is soft and corporate, set against a blurred high-tech office background with hints of cool blue and gray tones, perfectly matching a modern SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVHp3nN7koudOd3qhLxl-Mbjx_Ggfp9Oa_mEQmG4pCdLFzXgZprlYnjzpxbZKBzRkLW_lXlnPZBAZ6RDTmDdb_Jdy8xwJPqB0Gi2cAxHsbbjd0zkr8807oI4qH3n-Uy1kf-7ohya1Ot47MEQxEEm9vxk38P4eQUsokOVCF9MwZG9oESz9xwiZlmCgkDDl2S9dX0EcTY4Gqv4qcffkIJ7pX2GHMxApEtf4-c1_NlPfd353NdysYsTQZJPEFjZpb7dBJLCYoPrMIIjY"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-xl lg:p-3xl space-y-2xl">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-xl">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-background">Winner Verification</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Review and approve prize claims from the March 2026 draw.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-xl py-md bg-surface-container-high text-primary font-label-sm text-label-sm rounded-lg hover:bg-surface-variant transition-all border border-primary/10 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                        Advanced Filters
+                    </button>
+<button class="px-xl py-md bg-primary text-on-primary font-label-sm text-label-sm rounded-lg hover:bg-hero-blue-dark transition-all shadow-md transform hover:scale-102 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                        Bulk Approve
+                    </button>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<div class="bg-pure-white p-xl rounded-xl border-l-4 border-momentum-orange-dark shadow-sm bg-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Pending Claims</span>
+<div class="p-sm bg-momentum-orange-light rounded-lg">
+<span class="material-symbols-outlined text-momentum-orange-dark">pending_actions</span>
+</div>
+</div>
+<div class="mt-md">
+<span class="font-headline-sm text-headline-sm text-on-background">142</span>
+<div class="flex items-center gap-xs text-impact-green-dark mt-xs">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% from last draw</span>
+</div>
+</div>
+</div>
+<div class="bg-pure-white p-xl rounded-xl border-l-4 border-win-gold shadow-sm bg-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Value for Review</span>
+<div class="p-sm bg-win-gold-light rounded-lg">
+<span class="material-symbols-outlined text-win-gold">payments</span>
+</div>
+</div>
+<div class="mt-md">
+<span class="font-headline-sm text-headline-sm text-on-background">$24,850.00</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Average claim: $175.00</p>
+</div>
+</div>
+<div class="bg-pure-white p-xl rounded-xl border-l-4 border-impact-green-dark shadow-sm bg-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Approval Rate</span>
+<div class="p-sm bg-impact-green-light rounded-lg">
+<span class="material-symbols-outlined text-impact-green-dark">verified</span>
+</div>
+</div>
+<div class="mt-md">
+<span class="font-headline-sm text-headline-sm text-on-background">94.2%</span>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-md">
+<div class="bg-impact-green-dark h-1.5 rounded-full" style="width: 94.2%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter Bar & Data Table Section -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden flex flex-col">
+<!-- Filter Bar -->
+<div class="p-xl border-b border-outline-variant/10 bg-off-white flex flex-wrap gap-xl items-center">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-11 pr-md py-md bg-white border border-outline-variant rounded-lg font-body-sm text-body-sm focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Search by name, email, or ticket ID..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Match Type</span>
+<select class="border border-outline-variant rounded-lg py-md px-xl bg-white font-body-sm text-body-sm focus:ring-primary">
+<option>All Matches</option>
+<option>5-Number Match</option>
+<option>4-Number Match</option>
+<option>3-Number Match</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Status</span>
+<select class="border border-outline-variant rounded-lg py-md px-xl bg-white font-body-sm text-body-sm focus:ring-primary">
+<option>Pending Approval</option>
+<option>Approved</option>
+<option>Rejected</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/30">
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase">User</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase">Prize Amount</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase">Match Type</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase">Proof</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase text-center">Submission Date</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase">Status</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- High Value Win Row: Robert Sterling -->
+<tr class="hover:bg-hero-blue-light/30 transition-colors group">
+<td class="px-xl py-xl">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">RS</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-background">Robert Sterling</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">r.sterling@fintechcorp.com</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-xl">
+<span class="font-mono text-body-md font-bold text-hero-blue-dark">$1,250.00</span>
+</td>
+<td class="px-xl py-xl">
+<span class="px-md py-xs bg-win-gold-light text-win-gold-muted font-label-sm text-label-sm rounded-full border border-win-gold/20">4-Number Match</span>
+</td>
+<td class="px-xl py-xl">
+<div class="relative w-16 h-10 rounded overflow-hidden group/thumb cursor-zoom-in">
+<img class="w-full h-full object-cover" data-alt="A macro close-up photograph of a physical lottery ticket with numbers matching a digital screen in the background. The focus is sharp on the four winning digits which are highlighted with a glowing green marker. The overall atmosphere is crisp, professional, and clear, with soft blue office lighting creating a sense of trust and data verification." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ6K2_HJP0dWn75Xq8YlZwgCwCt7xJn7bIvpg8f_fgYH_AxS1zLXRo9fEkT9U2w_z-EY586zMMsbBF24OZHZOuh4gOAV_GxrKtAsvTKMT2VCzEgEq-SZFPWpL8E8JaCm4cUxJ5nDH-DbGQDLFqcjWGd8MOXi9cH46kqLs9iwZqF9G5aTjyN4pkL_0TemSAO3SuiTYBpDhlFOTczoerCbgM_FWK-Swlk1DiW0km-JFEc40C3Ls_OzdkAFgRUVU76PYA2UHD6wFjKuo"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white text-[18px]">visibility</span>
+</div>
+</div>
+</td>
+<td class="px-xl py-xl text-center">
+<p class="font-body-sm text-body-sm">Mar 12, 2026</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">14:45 GMT</p>
+</td>
+<td class="px-xl py-xl">
+<span class="flex items-center gap-xs text-momentum-orange-dark bg-momentum-orange-light px-md py-xs rounded-full w-fit">
+<span class="w-1.5 h-1.5 bg-momentum-orange-dark rounded-full"></span>
+<span class="font-label-sm text-label-sm">Pending</span>
+</span>
+</td>
+<td class="px-xl py-xl text-right">
+<div class="flex items-center justify-end gap-md">
+<button class="p-sm text-impact-green-dark hover:bg-impact-green-light rounded-lg transition-colors" title="Approve">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-sm text-alert-red hover:bg-error-container rounded-lg transition-colors" title="Reject">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+<button class="px-md py-xs text-primary font-label-sm text-label-sm hover:underline">View Details</button>
+</div>
+</td>
+</tr>
+<!-- Other Row 1 -->
+<tr class="hover:bg-light-mist transition-colors group">
+<td class="px-xl py-xl">
+<div class="flex items-center gap-md">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional digital avatar of a young woman with a clean, friendly appearance. She is wearing a simple white blouse, and the background is a soft, out-of-focus gradient of light blues and greens, representing a modern corporate user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdwu1f8uGIRUTiqXZ8iYAZ1i2I2yd3U3AL4jorKZ9rv2d3zo5-Is2fuKD5mBHCc_4tI8HHOodGmx6n4-UZhNTbOJFyAZABW0BfmT5Y_5zzyrjnm1TWZV2ZTFg2-zZWCIW-DlO-ID1y3pMU_kGujU2kif4OX2PkzgBGVNX4EAndpbWezZ1wAl1AfVXVacU4zzDHuNZg_YH5fit9Ct9wxLK-1ArywLI42yYY-S-r77kUtBxC3ab8OYd-jXGppZxOwx4yjB4YzRXR_6k"/>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-background">Elena Rodriguez</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">elena.rod@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-xl">
+<span class="font-mono text-body-md font-bold text-on-surface">$50.00</span>
+</td>
+<td class="px-xl py-xl">
+<span class="px-md py-xs bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded-full">3-Number Match</span>
+</td>
+<td class="px-xl py-xl">
+<div class="w-16 h-10 rounded bg-surface-container-high animate-pulse"></div>
+</td>
+<td class="px-xl py-xl text-center">
+<p class="font-body-sm text-body-sm">Mar 12, 2026</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">16:20 GMT</p>
+</td>
+<td class="px-xl py-xl">
+<span class="flex items-center gap-xs text-impact-green-dark bg-impact-green-light px-md py-xs rounded-full w-fit">
+<span class="w-1.5 h-1.5 bg-impact-green-dark rounded-full"></span>
+<span class="font-label-sm text-label-sm">Approved</span>
+</span>
+</td>
+<td class="px-xl py-xl text-right">
+<div class="flex items-center justify-end gap-md">
+<button class="px-md py-xs text-on-surface-variant font-label-sm text-label-sm hover:underline">View Receipt</button>
+</div>
+</td>
+</tr>
+<!-- Other Row 2 -->
+<tr class="hover:bg-light-mist transition-colors group">
+<td class="px-xl py-xl">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary font-bold">MK</div>
+<div>
+<p class="font-title-md text-body-md font-semibold text-on-background">Marcus Knight</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">m.knight@archdesign.io</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-xl">
+<span class="font-mono text-body-md font-bold text-on-surface">$250.00</span>
+</td>
+<td class="px-xl py-xl">
+<span class="px-md py-xs bg-win-gold-light text-win-gold-muted font-label-sm text-label-sm rounded-full">4-Number Match</span>
+</td>
+<td class="px-xl py-xl">
+<div class="w-16 h-10 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clear photograph of a mobile screen displaying a verification code and matching game numbers. The screen lighting is bright and crisp against a slightly darker wooden desk background, creating high contrast for easy verification. The visual style is realistic and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIO2tMFSRvr0E-HZv3VvAWFLQDHOfSkDkncsAqUxUhwM1eGdCQXii7KvRye-cA_pDtKd7eLKS0vCyXfhGTTXFhId73t7pb6tjolsVTiNApaf704zicLhEL_5bOHKUph0AO_5YUUn9WNJwxCJE-k9nC2O8SpC0P-mcQ9FhIS96fDmXnwUsA2noqaVQvw9uyu8AhFriL7D01aNtr9lYHxbeo6SlZxgLMQrJaoeToaewU1HFnP9x6ROF3fp7_cjWtGorJ8KMvxw4N_ZI"/>
+</div>
+</td>
+<td class="px-xl py-xl text-center">
+<p class="font-body-sm text-body-sm">Mar 11, 2026</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">09:12 GMT</p>
+</td>
+<td class="px-xl py-xl">
+<span class="flex items-center gap-xs text-alert-red bg-error-container px-md py-xs rounded-full w-fit">
+<span class="w-1.5 h-1.5 bg-alert-red rounded-full"></span>
+<span class="font-label-sm text-label-sm">Rejected</span>
+</span>
+</td>
+<td class="px-xl py-xl text-right">
+<div class="flex items-center justify-end gap-md">
+<button class="px-md py-xs text-primary font-label-sm text-label-sm hover:underline">See Reason</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-xl py-md bg-surface-container-low border-t border-outline-variant/20 flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing <span class="font-bold text-on-surface">1-25</span> of 142 claims</p>
+<div class="flex items-center gap-xs">
+<button class="p-sm rounded-lg hover:bg-surface-container transition-all border border-outline-variant/30 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm">1</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container transition-all text-on-surface-variant font-label-sm text-label-sm">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container transition-all text-on-surface-variant font-label-sm text-label-sm">3</button>
+<button class="p-sm rounded-lg hover:bg-surface-container transition-all border border-outline-variant/30">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Help / System Status -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<div class="bg-hero-blue-light/40 border border-primary/20 rounded-xl p-xl flex gap-xl items-start">
+<div class="p-md bg-white rounded-full shadow-sm text-primary">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div>
+<h4 class="font-title-md text-body-md font-bold text-hero-blue-dark">Verification Policy Reminder</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs leading-relaxed">
+                            For all matches over $500.00, manual secondary verification of the ticket ID against the central ledger is mandatory before final payout release. Ensure high-resolution proof matches the user's registered identity.
+                        </p>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/20 p-xl">
+<h4 class="font-title-md text-body-md font-bold mb-md">Quick Logs</h4>
+<ul class="space-y-md">
+<li class="flex items-center gap-md pb-md border-b border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-impact-green-dark"></span>
+<p class="font-body-sm text-body-sm flex-1"><span class="font-bold">System</span> approved $25.00 for J. Doe (Auto-Verified)</p>
+<span class="font-label-sm text-label-sm text-outline">2m ago</span>
+</li>
+<li class="flex items-center gap-md pb-md border-b border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<p class="font-body-sm text-body-sm flex-1"><span class="font-bold">Admin Sarah</span> flagged claim #4592 for review</p>
+<span class="font-label-sm text-label-sm text-outline">15m ago</span>
+</li>
+<li class="flex items-center gap-md">
+<span class="w-2 h-2 rounded-full bg-momentum-orange-dark"></span>
+<p class="font-body-sm text-body-sm flex-1"><span class="font-bold">Robert Sterling</span> submitted high-value proof</p>
+<span class="font-label-sm text-label-sm text-outline">1h ago</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for Quick Actions (Suppressed on certain pages, but active here for 'New Manual Verification') -->
+<button class="fixed bottom-margin right-margin w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-30 group">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="absolute right-16 bg-dark-slate text-white px-md py-xs rounded font-label-sm text-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">New Entry</span>
+</button>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.title === 'Approve') {
+                    const row = this.closest('tr');
+                    const badge = row.querySelector('.text-momentum-orange-dark');
+                    if (badge) {
+                        badge.className = 'flex items-center gap-xs text-impact-green-dark bg-impact-green-light px-md py-xs rounded-full w-fit';
+                        badge.innerHTML = '<span class="w-1.5 h-1.5 bg-impact-green-dark rounded-full"></span><span class="font-label-sm text-label-sm">Approved</span>';
+                        this.disabled = true;
+                        this.style.opacity = '0.5';
+                    }
+                }
+            });
+        });
+
+        // Dashboard filtering logic (Placeholder)
+        const searchInput = document.querySelector('input[placeholder*="Search by name"]');
+        searchInput?.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            document.querySelectorAll('tbody tr').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(val) ? '' : 'none';
+            });
+        });
+    </script>
+</body></html>
