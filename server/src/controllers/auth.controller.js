@@ -31,8 +31,13 @@ const register = async (req, res) => {
         const user = new User_1.User({ email, passwordHash, fullName, role });
         await user.save();
         const { accessToken, refreshToken } = generateTokens(user.id);
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-        res.cookie('accessToken', accessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+        const cookieOptions = {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        };
+        res.cookie('refreshToken', refreshToken, cookieOptions);
+        res.cookie('accessToken', accessToken, cookieOptions);
         res.status(201).json({
             user: { id: user.id, email: user.email, fullName: user.fullName, role: user.role },
             accessToken
@@ -58,8 +63,13 @@ const login = async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
         const { accessToken, refreshToken } = generateTokens(user.id);
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-        res.cookie('accessToken', accessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+        const cookieOptions = {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        };
+        res.cookie('refreshToken', refreshToken, cookieOptions);
+        res.cookie('accessToken', accessToken, cookieOptions);
         res.json({
             user: { id: user.id, email: user.email, fullName: user.fullName, role: user.role },
             accessToken
@@ -82,8 +92,13 @@ const refresh = async (req, res) => {
             return res.status(401).json({ message: 'Invalid refresh token' });
         }
         const tokens = generateTokens(user.id);
-        res.cookie('refreshToken', tokens.refreshToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-        res.cookie('accessToken', tokens.accessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+        const cookieOptions = {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        };
+        res.cookie('refreshToken', tokens.refreshToken, cookieOptions);
+        res.cookie('accessToken', tokens.accessToken, cookieOptions);
         res.json({
             accessToken: tokens.accessToken,
             user: { id: user.id, email: user.email, fullName: user.fullName, role: user.role }
@@ -95,8 +110,13 @@ const refresh = async (req, res) => {
 };
 exports.refresh = refresh;
 const logout = (req, res) => {
-    res.clearCookie('accessToken');
-    res.clearCookie('refreshToken');
+    const cookieOptions = {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    };
+    res.clearCookie('accessToken', cookieOptions);
+    res.clearCookie('refreshToken', cookieOptions);
     res.json({ message: 'Logged out successfully' });
 };
 exports.logout = logout;
